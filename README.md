@@ -92,7 +92,7 @@ Voir `.env.example` pour la liste complète.
 
 ### ✅ Générateur Complet
 
-- **Longueur configurable** (8-64 caractères)
+- **Longueur configurable** (8-64 caractères, **14 par défaut**)
 - **Types de caractères** (majuscules, minuscules, chiffres, symboles)
 - **Exclusions intelligentes** (caractères similaires, ambigus)
 - **Mode Google Workspace** (compatibilité maximale)

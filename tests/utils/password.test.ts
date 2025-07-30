@@ -16,7 +16,7 @@ describe("Password Generation", () => {
   });
 
   it("devrait générer un mot de passe avec la longueur spécifiée", () => {
-    const length = 16;
+    const length = 14;
     const array = new Uint8Array(length);
     crypto.getRandomValues(array);
 
@@ -24,15 +24,15 @@ describe("Password Generation", () => {
   });
 
   it("devrait utiliser Web Crypto API pour la génération", () => {
-    const array = new Uint8Array(16);
+    const array = new Uint8Array(14);
     crypto.getRandomValues(array);
 
     expect(crypto.getRandomValues).toHaveBeenCalled();
   });
 
   it("devrait générer des valeurs aléatoires", () => {
-    const array1 = new Uint8Array(16);
-    const array2 = new Uint8Array(16);
+    const array1 = new Uint8Array(14);
+    const array2 = new Uint8Array(14);
 
     crypto.getRandomValues(array1);
     crypto.getRandomValues(array2);

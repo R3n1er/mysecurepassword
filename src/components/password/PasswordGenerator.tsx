@@ -22,7 +22,7 @@ export default function PasswordGenerator() {
   const [mounted, setMounted] = useState(false);
 
   const [options, setOptions] = useState<PasswordOptions>({
-    length: 16,
+    length: 14,
     includeUppercase: true,
     includeLowercase: true,
     includeNumbers: true,
