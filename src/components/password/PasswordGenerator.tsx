@@ -167,7 +167,7 @@ export default function PasswordGenerator() {
                 value={password}
                 readOnly
                 placeholder="Cliquez sur 'Générer' pour créer votre mot de passe sécurisé"
-                className="pr-16 text-lg font-mono text-center h-14 bg-gray-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600"
+                className="pr-16 text-lg font-mono text-center h-14 bg-white border-gray-300 text-slate-900 placeholder:text-slate-500 focus:border-blue-600 focus:ring-blue-600"
               />
               <Button
                 variant="ghost"
