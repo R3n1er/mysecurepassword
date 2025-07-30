@@ -71,13 +71,14 @@ export default function PasswordGenerator() {
 
       try {
         // Vérifier que window.crypto est disponible (côté client uniquement)
-        if (typeof window !== 'undefined' && window.crypto) {
+        if (typeof window !== "undefined" && window.crypto) {
           const array = new Uint8Array(options.length);
           window.crypto.getRandomValues(array);
 
           let generatedPassword = "";
           for (let i = 0; i < options.length; i++) {
-            generatedPassword += availableChars[array[i] % availableChars.length];
+            generatedPassword +=
+              availableChars[array[i] % availableChars.length];
           }
 
           setPassword(generatedPassword);
@@ -101,7 +102,7 @@ export default function PasswordGenerator() {
       }
 
       if (showLoading) setIsGenerating(false);
-      
+
       // Déclencher l'animation de confettis seulement si demandé
       if (triggerConfetti) {
         setShowConfetti(true);
@@ -109,13 +110,6 @@ export default function PasswordGenerator() {
     },
     [options]
   );
-
-  // Générer un mot de passe initial au chargement (sans confettis)
-  useEffect(() => {
-    if (mounted && !password) {
-      generatePassword(false, false);
-    }
-  }, [mounted, password, generatePassword]);
 
   // Régénération automatique quand les options changent et qu'un mot de passe existe
   const handleOptionChange = useCallback(
@@ -135,7 +129,7 @@ export default function PasswordGenerator() {
   );
 
   const copyToClipboard = async () => {
-    if (password && typeof window !== 'undefined' && navigator.clipboard) {
+    if (password && typeof window !== "undefined" && navigator.clipboard) {
       try {
         await navigator.clipboard.writeText(password);
         setCopied(true);
@@ -333,11 +327,11 @@ export default function PasswordGenerator() {
           </div>
         </div>
       </div>
-      
+
       {/* Animation de confettis */}
-      <Confetti 
-        isActive={showConfetti} 
-        onComplete={() => setShowConfetti(false)} 
+      <Confetti
+        isActive={showConfetti}
+        onComplete={() => setShowConfetti(false)}
       />
     </div>
   );
