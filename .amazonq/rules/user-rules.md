@@ -1,0 +1,5 @@
+- Always run Terminal Command
+- Explain then do it
+- Always test with script or Vitest if it's working. Put test in "tests" folder.
+- Use Context7 MCP server for up to date documentation
+- Force local dev server on port 3000

@@ -1,0 +1,335 @@
+Étape 1 : Création du Boilerplate Next.js 15
+   - Initialiser un projet Next.js 15 (avec App Router).
+   - Intégrer Supabase pour l'authentification et la base de données.
+   - Utiliser Neon pour la base de données Postgres (en complément de Supabase si nécessaire).
+   - Styling avec Tailwind CSS et Daisy UI.
+   - Composants avec Shadcn (qui utilise Radix UI et Tailwind).
+   - Configurer les icônes (Lineicons et React Icons).
+   - Intégrer Mailgun pour les emails.
+   - Intégrer Twilio pour les SMS.
+   - Intégrer Algolia pour la recherche.
+   - Gestion des paiements : Stripe, PayPal, et Lemon Squeezy (nous utiliserons Stripe pour la vente du boilerplate, mais le boilerplate doit inclure des exemples pour ces trois).
+   - Intégration de Cal.com pour la réservation de calendrier (version open source auto-hébergée).
+   - Intégration de Documenso pour la signature de documents (version open source).
+   - SEO : utiliser les balises appropriées, sitemap, etc.
+   - RGPD : gestion des cookies avec un banner et consentement.
+   - Tests unitaires avec Vitest.
+   - Règles de qualité : ESLint, Prettier, et règles de curseur (peut-être via un fichier de configuration .vscode).
+   - Accessibilité : respect des normes WCAG.
+ Étape 2 : Documentation
+   - Créer une documentation dans le style de Shipfast, en utilisant peut-être Nextra ou Docusaurus.
+   - La documentation doit couvrir :
+        * Comment installer le boilerplate.
+        * Comment configurer chaque service (Supabase, Mailgun, etc.).
+        * Comment utiliser les composants.
+        * Comment étendre le boilerplate.
+        * Comment gérer les paiements, les réservations, etc.
+ Étape 3 : Landing Page
+   - Une page d'accueil attrayante qui présente les caractéristiques du boilerplate.
+   - Des sections : fonctionnalités, avantages, témoignages (futurs), prix (150€), FAQ.
+   - Bouton d'achat qui redirige vers une page de paiement (via Stripe, Lemon Squeezy, etc.).
+ Étape 4 : Vente et Livraison
+   - Mettre en place un système de licence (par exemple, une licence personnelle pour un usage sur plusieurs projets).
+   - Après paiement, l'acheteur reçoit un lien pour télécharger le code source (via GitHub private repo ou un zip).
+   - Utiliser Lemon Squeezy ou Stripe pour gérer les licences et les téléchargements.
+ Plan d'action :
+ 1. Initialiser le projet Next.js :
+    ```bash
+    npx create-next-app@latest nextjs-supabase-boilerplate --typescript --eslint
+    cd nextjs-supabase-boilerplate
+    ```
+ 2. Ajouter les dépendances :
+    ```bash
+    npm install supabase @supabase/auth-helpers-nextjs @supabase/supabase-js
+    npm install tailwindcss postcss autoprefixer daisyui
+    npm install @radix-ui/react-slot class-variance-authority clsx tailwind-merge  # pour shadcn
+    npm install lucide-react  # icônes pour shadcn
+    npm install react-icons
+    npm install line-awesome  # ou une alternative pour Lineicons, car Lineicons n'est pas sur npm. On peut utiliser un CDN ou une autre librairie.
+    npm install algoliasearch @types/algoliasearch  # pour Algolia
+    npm install stripe @stripe/stripe-js
+    npm install lemon-squeezy  # pour Lemon Squeezy
+    npm install paypal-rest-sdk  # ou un autre SDK PayPal
+    npm install mailgun-js
+    npm install twilio
+    npm install vitest @testing-library/react @testing-library/jest-dom jsdom  # pour les tests
+    ```
+ 3. Configurer Tailwind CSS avec DaisyUI :
+    - Modifier `tailwind.config.js` :
+      ```js
+      module.exports = {
+        content: [
+          './src/**/*.{js,ts,jsx,tsx,mdx}',
+        ],
+        theme: {
+          extend: {},
+        },
+        plugins: [require("daisyui")],
+      }
+      ```
+ 4. Configurer Shadcn : 
+    - Suivre la documentation de Shadcn pour l'initialisation : https://ui.shadcn.com/docs/installation/next
+    - En résumé, on initialise les composants avec :
+      ```bash
+      npx shadcn-ui@latest init
+      ```
+    - Puis on ajoute des composants, par exemple :
+      ```bash
+      npx shadcn-ui@latest add button
+      ```
+ 5. Configurer Supabase :
+    - Créer un fichier `lib/supabaseClient.ts` :
+      ```ts
+      import { createClient } from '@supabase/supabase-js'
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+      const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+      if (!supabaseUrl || !supabaseAnonKey) {
+        throw new Error('Missing Supabase environment variables')
+      }
+      export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+      ```
+    - Configurer les variables d'environnement dans un fichier `.env.local`.
+ 6. Pour les icônes, on peut utiliser React Icons et importer Lineicons si disponible. Sinon, on peut utiliser un CDN dans `public/index.html` (mais ce n'est pas idéal pour une application React). Une alternative est d'utiliser un paquet comme `react-icons` qui a beaucoup d'icônes.
+ 7. Intégration de Mailgun, Twilio, Algolia, etc. : créer des services dans `lib/` pour chaque intégration.
+ 8. Pour Cal.com et Documenso, ce sont des services externes. On peut fournir des composants qui s'interfacent avec leurs API, ou bien des exemples d'intégration.
+ 9. Mise en place du RGPD :
+    - Utiliser un composant de bannière de cookies, par exemple `react-cookie-consent`.
+    - Configurer le tracking Google Analytics (si utilisé) seulement après consentement.
+ 10. Tests : 
+     - Configurer Vitest : créer un fichier `vitest.config.ts` et écrire des tests unitaires pour les composants et fonctions.
+ 11. Accessibilité : 
+     - Utiliser des outils comme eslint-plugin-jsx-a11y.
+     - Vérifier avec des outils comme axe.
+ 12. Documentation : 
+     - On peut utiliser Nextra (https://nextra.site) pour la documentation, qui s'intègre bien avec Next.js.
+ 13. Landing Page :
+     - Créer une route `/` qui sera la landing page. Cette page doit être séparée de l'application principale (si le boilerplate est une application derrière un login, alors la landing page est publique).
+ 14. Système de vente :
+     - Mettre en place une page de vente avec Stripe ou Lemon Squeezy.
+     - Après paiement, l'utilisateur est redirigé vers une page de téléchargement ou reçoit un email avec le lien du dépôt GitHub privé.
+ 15. Hébergement :
+     - Le code de la landing page et de la documentation peut être hébergé sur Vercel.
+     - Le dépôt du boilerplate sera sur GitHub (en privé, et on donne accès aux acheteurs).
+ 16. Licence : 
+     - Créer un fichier LICENSE (par exemple MIT, mais vous pouvez choisir une licence commerciale). Si c'est une licence commerciale, il faut un système de vérification. On peut générer une clé de licence et la vérifier à chaque démarrage (mais cela peut être contourné). Une alternative est de vendre l'accès au dépôt privé.
+ 17. Structure du projet :
+     - `/app` : l'application Next.js (pour la démo et l'admin du boilerplate)
+     - `/docs` : la documentation (avec Nextra)
+     - `/landing` : la landing page (peut être dans `/app/landing` ou un sous-domaine)
+ 18. Mise en place de la CI/CD :
+     - Avec GitHub Actions pour les tests et le déploiement sur Vercel.
+ Étant donné l'ampleur, il est préférable de développer progressivement et de prioriser les fonctionnalités essentielles.
+ Note : Certaines intégrations comme Cal.com et Documenso sont des applications à part entière. On peut fournir des composants qui appellent leurs API, mais il faut aussi héberger ces services. Le boilerplate pourrait inclure des scripts Docker pour les lancer localement, mais cela complexifie.
+ Pour commencer, on peut se concentrer sur une intégration de base avec Supabase, Tailwind, Shadcn, et les services tiers (Mailgun, Twilio, Algolia) et les paiements. Ensuite, ajouter les autres services.
+ Plan de livraison :
+ Phase 1 :
+   - Boilerplate de base (Next.js 15, Supabase, Tailwind, Shadcn, Vitest, ESLint, Prettier).
+   - Authentification avec Supabase.
+   - Exemple de CRUD avec Supabase.
+   - Intégration de Tailwind et Shadcn avec des composants de base (bouton, formulaire, etc.).
+   - Configuration de base pour Mailgun, Twilio, Algolia (avec des exemples).
+ Phase 2 :
+   - Paiements : Stripe, PayPal, Lemon Squeezy (exemples).
+   - Intégration de Cal.com et Documenso (exemples d'appel API).
+   - SEO et RGPD.
+ Phase 3 :
+   - Documentation.
+   - Landing page.
+ Phase 4 :
+   - Système de vente et de livraison.
+ Ce projet est ambitieux et nécessite du temps. Il est important de valider le marché avant de tout construire.
+ Conseil : Commencer par un MVP (Minimum Viable Product) avec les fonctionnalités de base, puis itérer.
+ Si vous voulez que je vous aide à coder des parties spécifiques, dites-le-moi.
+Plan pour votre Boilerplate Next.js 15 Supabase 🚀
+Voici une stratégie complète pour créer, documenter et commercialiser votre boilerplate, inspirée de Shipfast et des exemples fournis.
+
+1. Architecture Technique du Boilerplate
+Stack Principale:
+
+Framework: Next.js 15 (App Router + RSC)
+
+DB/Backend:
+
+Supabase (Auth, PostgreSQL, Storage)
+
+Neon (Serverless Postgres pour migrations hybrides)
+
+UI:
+
+Tailwind CSS + DaisyUI (thèmes personnalisables)
+
+Shadcn (composants accessibles)
+
+Paiements:
+
+Stripe (abonnements/one-shot)
+
+PayPal + Lemon Squeezy (alternatives)
+
+Services Intégrés:
+
+Mailgun (emails transactionnels)
+
+Twilio (SMS)
+
+Algolia (recherche)
+
+Cal.com (réservations)
+
+Documenso (signatures électroniques)
+
+Conformité:
+
+RGPD/GDPR (bannière cookies)
+
+Accessibilité (WCAG 2.1)
+
+Tests: Vitest + Testing Library
+
+CI/CD: Vercel (déploiements automatiques)
+
+2. Fonctionnalités Clés à Implémenter
+Module	Composants/Exemples
+Authentification	Social Login (Google/GitHub), Magic Link, 2FA, Profil utilisateur
+Paiements	Checkout Stripe, Portail client, Webhooks, Abonnements
+Booking	Intégration Cal.com, gestion de créneaux, notifications
+Documents	Signature électronique (Documenso), templates PDF
+SEO	Balises méta dynamiques, sitemap.xml, Open Graph, optimisation performances
+Monitoring	Logs Supabase, Sentry (erreurs), Vercel Analytics
+Thèmes	3 thèmes prédéfinis (Sombre, Clair, Pro) + personnalisation via DaisyUI
+3. Documentation Technique (Comme Shipfast)
+Structure:
+
+text
+docs/
+├── getting-started.md     # Installation & configuration
+├── components.md          # Utilisation des composants Shadcn
+├── payment-setup.md       # Stripe/PayPal/Lemon Squeezy
+├── themes.md              # Personnalisation des thèmes
+├── deployment.md          # Déploiement sur Vercel
+└── faq.md                 # Dépannage commun
+Outils:
+
+Utilisez Nextra (basé sur Next.js) pour une doc interactive avec live demos.
+
+Exemple: Code de la doc Shipfast
+
+4. Landing Page de Vente
+Sections Essentielles:
+
+Hero Section:
+
+Titre percutant ("Next.js Boilerplate Pro - Lancez vos projets en 1 jour")
+
+GIF du boilerplate en action
+
+CTA "Acheter pour 150€"
+
+Features Grid:
+
+Icônes + descriptions courtes (Supabase, Cal.com, Paiements, etc.)
+
+Exemples de Composants:
+
+Galerie interactive (boutons, cartes, formulaires)
+
+Témoignages:
+
+Fake it till you make it (ex: "Gagné 2 semaines de dev !")
+
+FAQ:
+
+"Puis-je l'utiliser pour des clients ?", "Mises à jour incluses ?"
+
+Pied de Page:
+
+Lien vers GitHub, contact, politique de confidentialité
+
+Design:
+
+Inspirez-vous de Shipfast (minimaliste, tons bleus/professionnels)
+
+5. Stratégie de Commercialisation
+Prix:
+
+150€ (licence perpétuelle + accès aux mises à jour pendant 1 an)
+
+Offre groupée: Boilerplate + 1h de support à 200€
+
+Plateformes de Vente:
+
+Lemon Squeezy:
+
+Gestion des licences, téléchargements automatiques
+
+Stripe Payment Links:
+
+Pour les paiements directs depuis la landing page
+
+GitHub Private Repository:
+
+Accès après achat via invitation
+
+Marketing:
+
+Reddit: r/webdev, r/nextjs
+
+Indie Hackers: Témoignage de création
+
+YouTube: Tutoriel "Créer un SaaS en 1h avec ce boilerplate"
+
+SEO Ciblé: Mots-clés "nextjs boilerplate", "supabase starter"
+
+6. Étapes de Développement Prioritaires
+Setup de base (Next.js 15 + Supabase + Tailwind)
+
+Intégrer Shadcn (composants critiques: DataTable, Form, Auth)
+
+Connecter services tiers (Stripe, Mailgun, Algolia)
+
+Ajouter les templates (dashboard, settings, booking)
+
+Documentation (avec Nextra)
+
+Landing page (dans le même repo Next.js)
+
+Tests E2E (Vitest + Playwright)
+
+7. Exemple de Structure de Fichiers
+bash
+my-boilerplate/
+├── app/
+│   ├── (main)/           # Application principale
+│   ├── (landing)/        # Landing page de vente
+│   └── (docs)/           # Documentation (Nextra)
+├── components/           # Composants Shadcn + personnalisés
+├── lib/                  # Supabase client, utilities
+├── scripts/              # Migrations DB, déploiement
+├── public/               # Assets statiques
+├── tests/                # Vitest + tests d'intégration
+└── .env.example          # Configuration services tiers
+8. Ressources Recommandées
+Shadcn Documentation
+
+Supabase Next.js Starter
+
+Stripe Next.js Examples
+
+Cal.com Integration Docs
+
+GDPR Banner Component
+
+Prochaines Actions:
+Cloner ce repo comme point de départ:
+
+bash
+npx create-next-app -e https://github.com/ixartz/Next-js-Boilerplate
+Ajouter Supabase:
+
+bash
+npm install @supabase/supabase-js
+Configurer Shadcn:
+
+bash
+npx shadcn-ui@latest init
+Avec cette structure, vous pouvez lancer un MVP en 2-3 semaines. Focus sur la valeur perçue (documentation pro + démos live) pour justifier le prix.
