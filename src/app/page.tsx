@@ -1,5 +1,11 @@
 import PasswordGenerator from "@/components/password/PasswordGenerator";
+import AppPresentation from "@/components/presentation/AppPresentation";
 
 export default function HomePage() {
-  return <PasswordGenerator />;
+  return (
+    <div>
+      <AppPresentation />
+      <PasswordGenerator />
+    </div>
+  );
 }

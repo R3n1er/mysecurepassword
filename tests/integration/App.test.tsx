@@ -74,19 +74,18 @@ describe("Application Intégration", () => {
     render(<HomePage />);
 
     await waitFor(() => {
-      expect(
-        screen.getByText("Compatibilité Google Workspace")
-      ).toBeInTheDocument();
+      const googleWorkspaceLabels = screen.getAllByText("Compatibilité Google Workspace");
+      expect(googleWorkspaceLabels.length).toBeGreaterThan(0);
     });
 
-    const googleCheckbox = screen.getByLabelText(
-      "Compatibilité Google Workspace"
-    );
-    fireEvent.click(googleCheckbox);
-
-    await waitFor(() => {
-      expect(googleCheckbox).toBeChecked();
+    // Trouver le checkbox dans le composant PasswordGenerator
+    const googleWorkspaceCheckbox = screen.getByRole("checkbox", {
+      name: /compatibilité google workspace/i,
     });
+
+    fireEvent.click(googleWorkspaceCheckbox);
+
+    expect(googleWorkspaceCheckbox).toBeChecked();
   });
 
   it("devrait avoir une interface responsive", async () => {
