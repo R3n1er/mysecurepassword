@@ -2231,6 +2231,10 @@ body {
   height: 4rem;
 }
 
+.h-2 {
+  height: .5rem;
+}
+
 .h-3 {
   height: .75rem;
 }
@@ -2255,10 +2259,6 @@ body {
   height: 2.25rem;
 }
 
-.h-2 {
-  height: .5rem;
-}
-
 .min-h-screen {
   min-height: 100vh;
 }
@@ -2269,6 +2269,10 @@ body {
 
 .w-16 {
   width: 4rem;
+}
+
+.w-2 {
+  width: .5rem;
 }
 
 .w-3\/4 {
@@ -2293,10 +2297,6 @@ body {
 
 .w-full {
   width: 100%;
-}
-
-.w-2 {
-  width: .5rem;
 }
 
 .max-w-2xl {
@@ -2484,12 +2484,12 @@ body {
   border-radius: calc(var(--radius)  - 2px);
 }
 
-.rounded-xl {
-  border-radius: .75rem;
-}
-
 .rounded-sm {
   border-radius: calc(var(--radius)  - 4px);
+}
+
+.rounded-xl {
+  border-radius: .75rem;
 }
 
 .border {

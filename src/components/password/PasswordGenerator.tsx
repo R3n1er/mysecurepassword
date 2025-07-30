@@ -38,7 +38,7 @@ export default function PasswordGenerator() {
   }, []);
 
   const generatePassword = useCallback(
-    async (showLoading = true) => {
+    async (showLoading = true, triggerConfetti = false) => {
       if (showLoading) setIsGenerating(true);
       if (showLoading) await new Promise((resolve) => setTimeout(resolve, 300));
 
@@ -102,11 +102,20 @@ export default function PasswordGenerator() {
 
       if (showLoading) setIsGenerating(false);
       
-      // Déclencher l'animation de confettis
-      setShowConfetti(true);
+      // Déclencher l'animation de confettis seulement si demandé
+      if (triggerConfetti) {
+        setShowConfetti(true);
+      }
     },
     [options]
   );
+
+  // Générer un mot de passe initial au chargement (sans confettis)
+  useEffect(() => {
+    if (mounted && !password) {
+      generatePassword(false, false);
+    }
+  }, [mounted, password, generatePassword]);
 
   // Régénération automatique quand les options changent et qu'un mot de passe existe
   const handleOptionChange = useCallback(
@@ -114,9 +123,9 @@ export default function PasswordGenerator() {
       setOptions((prev) => {
         const updatedOptions = { ...prev, ...newOptions };
 
-        // Si un mot de passe existe déjà, le régénérer automatiquement
+        // Si un mot de passe existe déjà, le régénérer automatiquement sans confettis
         if (password) {
-          setTimeout(() => generatePassword(false), 0);
+          setTimeout(() => generatePassword(false, false), 0);
         }
 
         return updatedOptions;
@@ -202,7 +211,7 @@ export default function PasswordGenerator() {
             </div>
 
             <Button
-              onClick={() => generatePassword()}
+              onClick={() => generatePassword(true, true)}
               disabled={isGenerating}
               className="w-full h-14 text-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
             >
