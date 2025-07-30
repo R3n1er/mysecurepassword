@@ -68,16 +68,28 @@ export default function PasswordGenerator() {
       }
 
       try {
-        const array = new Uint8Array(options.length);
-        window.crypto.getRandomValues(array);
+        // Vérifier que window.crypto est disponible (côté client uniquement)
+        if (typeof window !== 'undefined' && window.crypto) {
+          const array = new Uint8Array(options.length);
+          window.crypto.getRandomValues(array);
 
-        let generatedPassword = "";
-        for (let i = 0; i < options.length; i++) {
-          generatedPassword += availableChars[array[i] % availableChars.length];
+          let generatedPassword = "";
+          for (let i = 0; i < options.length; i++) {
+            generatedPassword += availableChars[array[i] % availableChars.length];
+          }
+
+          setPassword(generatedPassword);
+        } else {
+          // Fallback pour le serveur ou si crypto n'est pas disponible
+          let generatedPassword = "";
+          for (let i = 0; i < options.length; i++) {
+            generatedPassword +=
+              availableChars[Math.floor(Math.random() * availableChars.length)];
+          }
+          setPassword(generatedPassword);
         }
-
-        setPassword(generatedPassword);
       } catch {
+        // Fallback en cas d'erreur
         let generatedPassword = "";
         for (let i = 0; i < options.length; i++) {
           generatedPassword +=
@@ -109,7 +121,7 @@ export default function PasswordGenerator() {
   );
 
   const copyToClipboard = async () => {
-    if (password) {
+    if (password && typeof window !== 'undefined' && navigator.clipboard) {
       try {
         await navigator.clipboard.writeText(password);
         setCopied(true);

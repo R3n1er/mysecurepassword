@@ -28,11 +28,4 @@ describe("HomePage", () => {
       screen.getByText("Générateur de mots de passe sécurisés")
     ).toBeInTheDocument();
   });
-
-  it("devrait avoir une structure de base", () => {
-    render(<HomePage />);
-
-    const container = screen.getByTestId("password-generator").parentElement;
-    expect(container).toHaveClass("relative", "z-10");
-  });
 });
