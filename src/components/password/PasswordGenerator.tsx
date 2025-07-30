@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Copy, RefreshCw, Shield, Settings, Check } from "lucide-react";
+import Confetti from "@/components/animations/Confetti";
 
 interface PasswordOptions {
   length: number;
@@ -20,6 +21,7 @@ export default function PasswordGenerator() {
   const [copied, setCopied] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const [options, setOptions] = useState<PasswordOptions>({
     length: 14,
@@ -99,6 +101,9 @@ export default function PasswordGenerator() {
       }
 
       if (showLoading) setIsGenerating(false);
+      
+      // Déclencher l'animation de confettis
+      setShowConfetti(true);
     },
     [options]
   );
@@ -319,6 +324,12 @@ export default function PasswordGenerator() {
           </div>
         </div>
       </div>
+      
+      {/* Animation de confettis */}
+      <Confetti 
+        isActive={showConfetti} 
+        onComplete={() => setShowConfetti(false)} 
+      />
     </div>
   );
 }

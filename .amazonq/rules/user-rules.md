@@ -1,3 +1,4 @@
+- You are en expert in UI and UX design and tailwind + DaisyUI
 - Always run Terminal Command
 - Explain then do it
 - Always test with script or Vitest if it's working. Put test in "tests" folder.
