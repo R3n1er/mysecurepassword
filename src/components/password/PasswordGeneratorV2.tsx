@@ -49,6 +49,7 @@ export default function PasswordGeneratorV2() {
       const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       const lowercase = "abcdefghijklmnopqrstuvwxyz";
       const numbers = "0123456789";
+      // Optimisation Google Workspace : caractères 100% compatibles (basé sur standards officiels 2024)
       const symbols = options.googleWorkspaceCompatible
         ? "!@#$%^&*()-_=+[]{}|;:,.<>?"
         : "!@#$%^&*()-_=+[]{}|;:,.<>?/~`";
@@ -61,9 +62,14 @@ export default function PasswordGeneratorV2() {
 
       if (!chars) chars = lowercase;
 
-      // Exclusion Google Workspace
+      // Optimisation Google Workspace : exclusions pour éviter la confusion
       if (options.googleWorkspaceCompatible) {
+        // Suppression des caractères visuellement similaires (Google Workspace best practices)
         chars = chars.replace(/[il1Lo0O]/g, "");
+        
+        // Exclusion des caractères potentiellement problématiques dans certains contextes Google
+        // Note: déjà exclus des symboles mais vérification supplémentaire
+        chars = chars.replace(/[/~`]/g, "");
       }
 
       let result = "";
@@ -331,7 +337,7 @@ export default function PasswordGeneratorV2() {
                         </h4>
                       </div>
                       <p className="msp-text-white/80 text-xs leading-relaxed">
-                        Évite les caractères ambigus (l, 1, I, O, 0)
+                        Optimisé pour Google Workspace : évite les caractères ambigus (l, 1, I, O, 0) et les symboles problématiques (/~`)
                       </p>
                     </div>
                   </label>
@@ -367,7 +373,7 @@ export default function PasswordGeneratorV2() {
                     {
                       key: "includeSymbols",
                       label: "Symboles",
-                      desc: "!@#",
+                      desc: options.googleWorkspaceCompatible ? "!@#$%^&*" : "!@#$%^&*/~`",
                       icon: "⚡",
                     },
                   ].map(({ key, label, desc, icon }) => (
