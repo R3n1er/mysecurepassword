@@ -12,10 +12,14 @@ export default function HeaderV2() {
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6">
           {/* Logo sur fond jaune - À GAUCHE */}
           <div className="msp-logo flex items-center justify-center w-24 h-24 lg:w-32 lg:h-32 p-4 flex-shrink-0">
-            <div className="text-center">
-              <div className="text-2xl lg:text-3xl font-bold">MSP</div>
-              <div className="text-xs lg:text-sm font-medium mt-1">Secure</div>
-            </div>
+            <Image
+              src="/mysecurepassword-logo-v2-min.png"
+              alt="MySecurePassword Logo"
+              width={80}
+              height={80}
+              className="w-16 h-16 lg:w-20 lg:h-20 object-contain"
+              priority
+            />
           </div>
 
           {/* Contenu principal avec texte BLANC */}
