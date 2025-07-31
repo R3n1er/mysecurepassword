@@ -34,9 +34,9 @@ function HeaderV2() {
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                 src: "/mysecurepassword-logo-v2-min.png",
                                 alt: "MySecurePassword Logo",
-                                width: 80,
-                                height: 80,
-                                className: "w-16 h-16 lg:w-20 lg:h-20 object-contain",
+                                width: 360,
+                                height: 360,
+                                className: "w-24 h-24 lg:w-28 lg:h-28 object-contain",
                                 priority: true
                             }, void 0, false, {
                                 fileName: "[project]/src/components/layout/HeaderV2.tsx",
@@ -2437,7 +2437,7 @@ function FooterV2() {
                                                 alt: "MySecurePassword Logo",
                                                 width: 64,
                                                 height: 64,
-                                                className: "w-12 h-12 object-contain"
+                                                className: "w-20 h-20 lg:w-24 lg:h-24 object-contain"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/layout/FooterV2.tsx",
                                                 lineNumber: 39,
@@ -2483,7 +2483,7 @@ function FooterV2() {
                                     children: "Générateur de mots de passe sécurisés, conforme RGPD, compatible Google Workspace. Développé en France."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                    lineNumber: 56,
+                                    lineNumber: 54,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2497,14 +2497,14 @@ function FooterV2() {
                                                     className: "w-5 h-5"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                                    lineNumber: 67,
+                                                    lineNumber: 65,
                                                     columnNumber: 17
                                                 }, this),
                                                 "Politique de confidentialité"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                            lineNumber: 63,
+                                            lineNumber: 61,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -2515,20 +2515,20 @@ function FooterV2() {
                                                     className: "w-5 h-5"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                                    lineNumber: 74,
+                                                    lineNumber: 72,
                                                     columnNumber: 17
                                                 }, this),
                                                 "Mentions légales"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                            lineNumber: 70,
+                                            lineNumber: 68,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                    lineNumber: 62,
+                                    lineNumber: 60,
                                     columnNumber: 13
                                 }, this)
                             ]
@@ -2545,7 +2545,7 @@ function FooterV2() {
                                     children: "Open Source"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                    lineNumber: 82,
+                                    lineNumber: 80,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2561,7 +2561,7 @@ function FooterV2() {
                                                     className: "w-6 h-6 text-white group-hover:scale-110 transition-transform"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 88,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2571,7 +2571,7 @@ function FooterV2() {
                                                             children: "Code source"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                                            lineNumber: 94,
+                                                            lineNumber: 90,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2579,19 +2579,19 @@ function FooterV2() {
                                                             children: "Voir le projet sur GitHub"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                                            lineNumber: 97,
+                                                            lineNumber: 93,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                                    lineNumber: 93,
+                                                    lineNumber: 89,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                            lineNumber: 86,
+                                            lineNumber: 82,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2599,19 +2599,19 @@ function FooterV2() {
                                             children: "Code source ouvert et auditable. Contribuez au projet ou signalez des améliorations sur GitHub."
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                            lineNumber: 102,
+                                            lineNumber: 98,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                    lineNumber: 85,
+                                    lineNumber: 81,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/layout/FooterV2.tsx",
-                            lineNumber: 81,
+                            lineNumber: 79,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2622,7 +2622,7 @@ function FooterV2() {
                                     children: "Contact"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                    lineNumber: 111,
+                                    lineNumber: 107,
                                     columnNumber: 13
                                 }, this),
                                 submitted ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2638,12 +2638,12 @@ function FooterV2() {
                                                         children: "✓"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                                        lineNumber: 119,
+                                                        lineNumber: 113,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                                    lineNumber: 118,
+                                                    lineNumber: 112,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2651,13 +2651,13 @@ function FooterV2() {
                                                     children: "Message envoyé !"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                                    lineNumber: 121,
+                                                    lineNumber: 115,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                            lineNumber: 117,
+                                            lineNumber: 111,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2665,13 +2665,13 @@ function FooterV2() {
                                             children: "Merci pour votre message. Nous vous répondrons rapidement."
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                            lineNumber: 123,
+                                            lineNumber: 119,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                    lineNumber: 116,
+                                    lineNumber: 110,
                                     columnNumber: 15
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
                                     onSubmit: handleSubmit,
@@ -2685,7 +2685,7 @@ function FooterV2() {
                                                     children: "Email"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                                    lineNumber: 130,
+                                                    lineNumber: 126,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -2698,13 +2698,13 @@ function FooterV2() {
                                                     className: "mt-2 bg-white/5 border-white/20 msp-text-white placeholder:text-white/50 focus:border-white/40 h-12 text-lg"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                                    lineNumber: 133,
+                                                    lineNumber: 132,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                            lineNumber: 129,
+                                            lineNumber: 125,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2715,7 +2715,7 @@ function FooterV2() {
                                                     children: "Message"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                                    lineNumber: 145,
+                                                    lineNumber: 144,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -2728,13 +2728,13 @@ function FooterV2() {
                                                     className: "mt-2 w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 msp-text-white placeholder:text-white/50 focus:border-white/40 focus:ring-0 focus:outline-none resize-none text-lg"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                                    lineNumber: 148,
+                                                    lineNumber: 150,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                            lineNumber: 144,
+                                            lineNumber: 143,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2748,14 +2748,14 @@ function FooterV2() {
                                                         className: "w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                                        lineNumber: 166,
+                                                        lineNumber: 168,
                                                         columnNumber: 23
                                                     }, this),
                                                     "Envoi..."
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                                lineNumber: 165,
+                                                lineNumber: 167,
                                                 columnNumber: 21
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "flex items-center gap-2",
@@ -2764,31 +2764,31 @@ function FooterV2() {
                                                         className: "w-5 h-5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                                        lineNumber: 171,
+                                                        lineNumber: 173,
                                                         columnNumber: 23
                                                     }, this),
                                                     "Envoyer le message"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                                lineNumber: 170,
+                                                lineNumber: 172,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                            lineNumber: 159,
+                                            lineNumber: 161,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/layout/FooterV2.tsx",
-                                    lineNumber: 128,
+                                    lineNumber: 124,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/layout/FooterV2.tsx",
-                            lineNumber: 110,
+                            lineNumber: 106,
                             columnNumber: 11
                         }, this)
                     ]
@@ -2804,12 +2804,12 @@ function FooterV2() {
                         children: "© 2024 MySecurePassword. Développé en France 🇫🇷 • Code source disponible sous licence open source"
                     }, void 0, false, {
                         fileName: "[project]/src/components/layout/FooterV2.tsx",
-                        lineNumber: 183,
+                        lineNumber: 185,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/layout/FooterV2.tsx",
-                    lineNumber: 182,
+                    lineNumber: 184,
                     columnNumber: 9
                 }, this)
             ]

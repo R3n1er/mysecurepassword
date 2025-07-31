@@ -7,7 +7,7 @@ export default function HeaderV2() {
     <header className="msp-header relative overflow-hidden">
       {/* Overlay effet glassmorphism très discret */}
       <div className="msp-glass-overlay"></div>
-      
+
       <div className="relative max-w-7xl mx-auto px-6 py-8">
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6">
           {/* Logo - À GAUCHE */}
@@ -15,9 +15,9 @@ export default function HeaderV2() {
             <Image
               src="/mysecurepassword-logo-v2-min.png"
               alt="MySecurePassword Logo"
-              width={80}
-              height={80}
-              className="w-16 h-16 lg:w-20 lg:h-20 object-contain"
+              width={360}
+              height={360}
+              className="w-24 h-24 lg:w-28 lg:h-28 object-contain"
               priority
             />
           </div>

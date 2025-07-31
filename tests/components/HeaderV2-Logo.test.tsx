@@ -32,9 +32,9 @@ describe('HeaderV2 - Nouveau Logo', () => {
       render(<HeaderV2 />);
       
       const logoImage = screen.getByAltText('MySecurePassword Logo');
-      expect(logoImage).toHaveAttribute('width', '80');
-      expect(logoImage).toHaveAttribute('height', '80');
-      expect(logoImage).toHaveClass('w-16', 'h-16', 'lg:w-20', 'lg:h-20', 'object-contain');
+      expect(logoImage).toHaveAttribute('width', '360');
+      expect(logoImage).toHaveAttribute('height', '360');
+      expect(logoImage).toHaveClass('w-24', 'h-24', 'lg:w-28', 'lg:h-28', 'object-contain');
     });
 
     it('devrait avoir la priorité de chargement activée', () => {
@@ -95,7 +95,7 @@ describe('HeaderV2 - Nouveau Logo', () => {
       render(<HeaderV2 />);
       
       const logoImage = screen.getByAltText('MySecurePassword Logo');
-      expect(logoImage).toHaveClass('w-16', 'h-16', 'lg:w-20', 'lg:h-20');
+      expect(logoImage).toHaveClass('w-24', 'h-24', 'lg:w-28', 'lg:h-28');
       
       // Vérifier que le conteneur existe (sans classes de taille spécifiques)
       const logoContainer = logoImage.closest('div');

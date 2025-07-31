@@ -16,15 +16,15 @@ export default function FooterV2() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulation d'envoi (remplacer par votre logique d'envoi)
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     setSubmitted(true);
     setIsSubmitting(false);
     setEmail("");
     setMessage("");
-    
+
     setTimeout(() => setSubmitted(false), 3000);
   };
 
@@ -41,23 +41,21 @@ export default function FooterV2() {
                   alt="MySecurePassword Logo"
                   width={64}
                   height={64}
-                  className="w-12 h-12 object-contain"
+                  className="w-20 h-20 lg:w-24 lg:h-24 object-contain"
                 />
               </div>
               <div>
                 <h3 className="text-2xl font-bold msp-text-white">
                   MySecurePassword
                 </h3>
-                <p className="msp-text-white/80">
-                  Solution française
-                </p>
+                <p className="msp-text-white/80">Solution française</p>
               </div>
             </div>
             <p className="msp-text-white/70 leading-relaxed text-lg">
-              Générateur de mots de passe sécurisés, conforme RGPD, 
-              compatible Google Workspace. Développé en France.
+              Générateur de mots de passe sécurisés, conforme RGPD, compatible
+              Google Workspace. Développé en France.
             </p>
-            
+
             {/* Liens légaux */}
             <div className="space-y-3">
               <a
@@ -79,9 +77,7 @@ export default function FooterV2() {
 
           {/* Liens GitHub */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold msp-text-white">
-              Open Source
-            </h3>
+            <h3 className="text-2xl font-bold msp-text-white">Open Source</h3>
             <div className="space-y-4">
               <a
                 href="https://github.com/R3n1er/mysecurepassword"
@@ -100,7 +96,7 @@ export default function FooterV2() {
                 </div>
               </a>
               <div className="text-sm msp-text-white/60 leading-relaxed">
-                Code source ouvert et auditable. Contribuez au projet ou 
+                Code source ouvert et auditable. Contribuez au projet ou
                 signalez des améliorations sur GitHub.
               </div>
             </div>
@@ -108,17 +104,17 @@ export default function FooterV2() {
 
           {/* Formulaire de contact */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold msp-text-white">
-              Contact
-            </h3>
-            
+            <h3 className="text-2xl font-bold msp-text-white">Contact</h3>
+
             {submitted ? (
               <div className="p-6 bg-green-500/20 border border-green-500/40 rounded-xl">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
                     <span className="text-white text-sm">✓</span>
                   </div>
-                  <span className="msp-text-white font-semibold">Message envoyé !</span>
+                  <span className="msp-text-white font-semibold">
+                    Message envoyé !
+                  </span>
                 </div>
                 <p className="msp-text-white/80 text-sm">
                   Merci pour votre message. Nous vous répondrons rapidement.
@@ -127,7 +123,10 @@ export default function FooterV2() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <Label htmlFor="contact-email" className="msp-text-white font-medium text-lg">
+                  <Label
+                    htmlFor="contact-email"
+                    className="msp-text-white font-medium text-lg"
+                  >
                     Email
                   </Label>
                   <Input
@@ -140,9 +139,12 @@ export default function FooterV2() {
                     className="mt-2 bg-white/5 border-white/20 msp-text-white placeholder:text-white/50 focus:border-white/40 h-12 text-lg"
                   />
                 </div>
-                
+
                 <div>
-                  <Label htmlFor="contact-message" className="msp-text-white font-medium text-lg">
+                  <Label
+                    htmlFor="contact-message"
+                    className="msp-text-white font-medium text-lg"
+                  >
                     Message
                   </Label>
                   <textarea
@@ -155,7 +157,7 @@ export default function FooterV2() {
                     className="mt-2 w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 msp-text-white placeholder:text-white/50 focus:border-white/40 focus:ring-0 focus:outline-none resize-none text-lg"
                   />
                 </div>
-                
+
                 <Button
                   type="submit"
                   disabled={isSubmitting}
@@ -181,8 +183,8 @@ export default function FooterV2() {
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-white/20 text-center">
           <p className="msp-text-white/60 text-lg">
-            © 2024 MySecurePassword. Développé en France 🇫🇷 • 
-            Code source disponible sous licence open source
+            © 2024 MySecurePassword. Développé en France 🇫🇷 • Code source
+            disponible sous licence open source
           </p>
         </div>
       </div>
