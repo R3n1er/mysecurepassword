@@ -54,14 +54,14 @@ export default function FooterV2() {
             {/* Liens légaux */}
             <div className="space-y-3">
               <a
-                href="#privacy"
+                href="/privacy"
                 className="flex items-center gap-2 msp-text-white/80 hover:text-white transition-colors text-lg"
               >
                 <Shield className="w-5 h-5" />
                 Politique de confidentialité
               </a>
               <a
-                href="#legal"
+                href="/legal"
                 className="flex items-center gap-2 msp-text-white/80 hover:text-white transition-colors text-lg"
               >
                 <ExternalLink className="w-5 h-5" />
