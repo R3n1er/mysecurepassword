@@ -31,12 +31,16 @@ describe('Design V2 - Validation du cahier des charges', () => {
       expect(header).toHaveClass('msp-header');
     });
 
-    it('devrait avoir le logo sur fond jaune à gauche', () => {
+    it('devrait avoir le logo à gauche sans fond coloré', () => {
       render(<HeaderV2 />);
       
-      const logo = document.querySelector('.msp-logo');
-      expect(logo).toBeInTheDocument();
-      expect(logo).toHaveClass('msp-logo');
+      const logoImage = screen.getByAltText('MySecurePassword Logo');
+      expect(logoImage).toBeInTheDocument();
+      
+      // Vérifier que le logo est dans un conteneur simple
+      const logoContainer = logoImage.closest('div');
+      expect(logoContainer).toBeInTheDocument();
+      expect(logoContainer).not.toHaveClass('msp-logo');
     });
 
     it('devrait avoir tout le texte en blanc', () => {

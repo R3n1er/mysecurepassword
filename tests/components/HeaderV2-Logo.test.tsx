@@ -45,19 +45,17 @@ describe('HeaderV2 - Nouveau Logo', () => {
       expect(logoImage).toHaveAttribute('priority', 'true');
     });
 
-    it('devrait être dans le conteneur avec le fond jaune (msp-logo)', () => {
+    it('devrait être dans un conteneur simple sans fond coloré', () => {
       render(<HeaderV2 />);
       
-      const logoContainer = document.querySelector('.msp-logo');
+      const logoImage = screen.getByAltText('MySecurePassword Logo');
+      const logoContainer = logoImage.closest('div');
+      
       expect(logoContainer).toBeInTheDocument();
       expect(logoContainer).toHaveClass(
-        'flex', 'items-center', 'justify-center',
-        'w-24', 'h-24', 'lg:w-32', 'lg:h-32',
-        'p-4', 'flex-shrink-0'
+        'flex', 'items-center', 'justify-center', 'flex-shrink-0'
       );
-      
-      const logoImage = logoContainer?.querySelector('img');
-      expect(logoImage).toBeInTheDocument();
+      expect(logoContainer).not.toHaveClass('msp-logo');
     });
 
     it('devrait maintenir la structure du header avec le nouveau logo', () => {
@@ -96,11 +94,12 @@ describe('HeaderV2 - Nouveau Logo', () => {
     it('devrait respecter le responsive design', () => {
       render(<HeaderV2 />);
       
-      const logoContainer = document.querySelector('.msp-logo');
-      expect(logoContainer).toHaveClass('w-24', 'h-24', 'lg:w-32', 'lg:h-32');
-      
       const logoImage = screen.getByAltText('MySecurePassword Logo');
       expect(logoImage).toHaveClass('w-16', 'h-16', 'lg:w-20', 'lg:h-20');
+      
+      // Vérifier que le conteneur existe (sans classes de taille spécifiques)
+      const logoContainer = logoImage.closest('div');
+      expect(logoContainer).toBeInTheDocument();
     });
   });
 
@@ -113,12 +112,11 @@ describe('HeaderV2 - Nouveau Logo', () => {
       expect(header).toHaveClass('msp-header');
     });
 
-    it('devrait garder le fond jaune du logo (msp-logo)', () => {
+    it('ne devrait plus avoir de fond jaune (msp-logo supprimé)', () => {
       render(<HeaderV2 />);
       
       const logoContainer = document.querySelector('.msp-logo');
-      expect(logoContainer).toBeInTheDocument();
-      expect(logoContainer).toHaveClass('msp-logo');
+      expect(logoContainer).not.toBeInTheDocument();
     });
 
     it('devrait maintenir la disposition flex responsive', () => {

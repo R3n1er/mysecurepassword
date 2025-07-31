@@ -10,8 +10,8 @@ export default function HeaderV2() {
       
       <div className="relative max-w-7xl mx-auto px-6 py-8">
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6">
-          {/* Logo sur fond jaune - À GAUCHE */}
-          <div className="msp-logo flex items-center justify-center w-24 h-24 lg:w-32 lg:h-32 p-4 flex-shrink-0">
+          {/* Logo - À GAUCHE */}
+          <div className="flex items-center justify-center flex-shrink-0">
             <Image
               src="/mysecurepassword-logo-v2-min.png"
               alt="MySecurePassword Logo"
