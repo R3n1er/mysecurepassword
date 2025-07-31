@@ -44,7 +44,8 @@ describe('Positionnement Google Workspace', () => {
     
     allCards?.forEach((card, index) => {
       const text = card.textContent || '';
-      if (text.includes('Longueur') && text.includes('caractères') && text.includes('min')) {
+      // Nouvelle structure compacte: "Longueur" + nombre + "car" (version courte)
+      if (text.includes('Longueur') && (text.includes('caractères') || text.includes('car'))) {
         foundLongueur = true;
         positionLongueur = index;
       }
@@ -108,7 +109,7 @@ describe('Positionnement Google Workspace', () => {
     // Vérifier que la nouvelle interface est plus compacte
     const googleWorkspaceSection = screen.getByText('Mode Google Workspace').closest('.msp-card');
     expect(googleWorkspaceSection).toBeInTheDocument();
-    expect(googleWorkspaceSection).toHaveClass('border-2', 'border-white/20', 'p-6');
+    expect(googleWorkspaceSection).toHaveClass('border-2', 'border-white/20', 'p-4');
     
     // Vérifier l'icône bâtiment
     const buildingIcon = screen.getByRole('img', { name: 'Bâtiment' });

@@ -137,38 +137,36 @@ export default function PasswordGeneratorV2() {
   }
 
   return (
-    <section className="msp-section-generator py-20">
+    <section className="msp-section-generator py-8">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Container principal avec design V2 */}
-        <div className="relative msp-card p-8 lg:p-12 overflow-hidden">
+        {/* Container principal avec design V2 compact */}
+        <div className="relative msp-card p-6 overflow-hidden">
           {/* Effet de brillance subtil */}
           <div className="msp-glass-overlay"></div>
 
-          <div className="relative space-y-10">
-            {/* Titre section */}
-            <div className="text-center space-y-4">
-              <div className="flex items-center justify-center gap-4 mb-6">
-                <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center border border-white/20">
-                  <Shield className="w-8 h-8 text-white" />
-                </div>
-                <div>
-                  <h2 className="text-4xl font-bold msp-text-white">
-                    Générateur Sécurisé
-                  </h2>
-                  <p className="text-xl msp-text-white/80 mt-2">
-                    Chiffrement cryptographique avancé
-                  </p>
-                </div>
+          <div className="relative space-y-6">
+            {/* Titre section compact */}
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center border border-white/20">
+                <Shield className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold msp-text-white">
+                  Générateur Sécurisé
+                </h2>
+                <p className="text-sm msp-text-white/80">
+                  Chiffrement cryptographique avancé
+                </p>
               </div>
             </div>
 
-            {/* Zone de mot de passe */}
-            <div className="space-y-6">
+            {/* Zone de mot de passe compacte */}
+            <div className="space-y-4">
               <div className="relative group">
                 <Label htmlFor="generated-password" className="sr-only">
                   Mot de passe généré
                 </Label>
-                <div className="relative bg-white/5 backdrop-blur-sm border-2 border-white/20 rounded-2xl p-2 group-hover:border-white/30 transition-colors">
+                <div className="relative bg-white/5 backdrop-blur-sm border-2 border-white/20 rounded-xl p-2 group-hover:border-white/30 transition-colors">
                   <Input
                     id="generated-password"
                     type="text"
@@ -177,7 +175,7 @@ export default function PasswordGeneratorV2() {
                     placeholder="Cliquez sur 'Générer' pour créer votre mot de passe sécurisé..."
                     aria-label="Mot de passe généré"
                     aria-describedby="password-description"
-                    className="w-full h-20 text-2xl font-mono bg-transparent border-0 msp-text-white placeholder:text-white/50 focus:ring-0 focus:outline-none px-8 text-center"
+                    className="w-full h-12 text-lg font-mono bg-transparent border-0 msp-text-white placeholder:text-white/50 focus:ring-0 focus:outline-none px-6 text-center"
                   />
                   <div id="password-description" className="sr-only">
                     {password 
@@ -191,17 +189,17 @@ export default function PasswordGeneratorV2() {
                       variant="ghost"
                       size="sm"
                       aria-label={copied ? "Mot de passe copié !" : "Copier le mot de passe"}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 h-14 px-6 msp-button-white rounded-xl"
+                      className="absolute right-2 top-1/2 transform -translate-y-1/2 h-8 px-4 msp-button-white rounded-lg text-xs"
                     >
                       {copied ? (
                         <>
-                          <Check className="w-6 h-6 text-green-600 mr-2" />
-                          <span className="text-sm font-medium">Copié !</span>
+                          <Check className="w-4 h-4 text-green-600 mr-1" />
+                          <span className="text-xs font-medium">Copié !</span>
                         </>
                       ) : (
                         <>
-                          <Copy className="w-6 h-6 mr-2" />
-                          <span className="text-sm font-medium">Copier</span>
+                          <Copy className="w-4 h-4 mr-1" />
+                          <span className="text-xs font-medium">Copier</span>
                         </>
                       )}
                     </Button>
@@ -209,20 +207,20 @@ export default function PasswordGeneratorV2() {
                 </div>
               </div>
 
-              {/* Bouton génération */}
+              {/* Bouton génération compact */}
               <ClientOnly
                 fallback={
                   <Button
                     onClick={() => generatePassword(true, true)}
                     disabled={isGenerating}
                     aria-label={isGenerating ? "Génération en cours" : "Générer un nouveau mot de passe sécurisé"}
-                    className="w-full h-16 text-xl font-bold msp-button-gradient rounded-2xl"
+                    className="w-full h-12 text-lg font-bold msp-button-gradient rounded-xl"
                   >
                     <div className="flex items-center justify-center">
                       {isGenerating ? (
-                        <RefreshCw className="w-7 h-7 mr-4 animate-spin" />
+                        <RefreshCw className="w-5 h-5 mr-3 animate-spin" />
                       ) : (
-                        <Shield className="w-7 h-7 mr-4" />
+                        <Shield className="w-5 h-5 mr-3" />
                       )}
                       <span>
                         {isGenerating
@@ -241,13 +239,13 @@ export default function PasswordGeneratorV2() {
                     onClick={() => generatePassword(true, true)}
                     disabled={isGenerating}
                     aria-label={isGenerating ? "Génération en cours" : "Générer un nouveau mot de passe sécurisé"}
-                    className="w-full h-16 text-xl font-bold msp-button-gradient rounded-2xl"
+                    className="w-full h-12 text-lg font-bold msp-button-gradient rounded-xl"
                   >
                     <div className="flex items-center justify-center">
                       {isGenerating ? (
-                        <RefreshCw className="w-7 h-7 mr-4 animate-spin" />
+                        <RefreshCw className="w-5 h-5 mr-3 animate-spin" />
                       ) : (
-                        <Shield className="w-7 h-7 mr-4" />
+                        <Shield className="w-5 h-5 mr-3" />
                       )}
                       <span>
                         {isGenerating
@@ -260,89 +258,90 @@ export default function PasswordGeneratorV2() {
               </ClientOnly>
             </div>
 
-            {/* Configuration */}
-            <div className="space-y-8">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center border border-white/20">
-                  <Settings className="w-6 h-6 text-white" />
+            {/* Configuration compacte */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center border border-white/20">
+                  <Settings className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold msp-text-white">
+                  <h3 className="text-lg font-bold msp-text-white">
                     Configuration
                   </h3>
-                  <p className="msp-text-white/80">
+                  <p className="text-sm msp-text-white/80">
                     Personnalisez votre mot de passe
                   </p>
                 </div>
               </div>
 
-              {/* Longueur */}
-              <div className="msp-card p-6">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <h4 className="text-xl font-bold msp-text-white">
-                      Longueur
-                    </h4>
-                    <div className="px-4 py-2 bg-white/10 border border-white/20 rounded-xl">
-                      <span className="msp-text-white font-bold text-lg">
-                        {options.length}
-                      </span>
-                      <span className="msp-text-white/80 text-sm ml-2">caractères</span>
+              {/* Configuration en grille compacte 2x2 */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                {/* Longueur */}
+                <div className="msp-card p-4">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <h4 className="text-lg font-bold msp-text-white">
+                        Longueur
+                      </h4>
+                      <div className="px-3 py-1 bg-white/10 border border-white/20 rounded-lg">
+                        <span className="msp-text-white font-bold text-sm">
+                          {options.length}
+                        </span>
+                        <span className="msp-text-white/80 text-xs ml-1">car</span>
+                      </div>
+                    </div>
+                    <input
+                      type="range"
+                      min="8"
+                      max="64"
+                      value={options.length}
+                      onChange={(e) =>
+                        handleOptionChange({ length: parseInt(e.target.value) })
+                      }
+                      className="w-full h-2 bg-white/20 rounded-full appearance-none cursor-pointer"
+                      aria-label={`Longueur du mot de passe: ${options.length} caractères`}
+                    />
+                    <div className="flex justify-between text-xs msp-text-white/60">
+                      <span>8</span>
+                      <span>64</span>
                     </div>
                   </div>
-                  <input
-                    type="range"
-                    min="8"
-                    max="64"
-                    value={options.length}
-                    onChange={(e) =>
-                      handleOptionChange({ length: parseInt(e.target.value) })
-                    }
-                    className="w-full h-3 bg-white/20 rounded-full appearance-none cursor-pointer"
-                    aria-label={`Longueur du mot de passe: ${options.length} caractères`}
-                  />
-                  <div className="flex justify-between text-sm msp-text-white/60">
-                    <span>8 min</span>
-                    <span>64 max</span>
-                  </div>
+                </div>
+
+                {/* Google Workspace compact */}
+                <div className="msp-card border-2 border-white/20 p-4">
+                  <label className="flex items-start space-x-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={options.googleWorkspaceCompatible}
+                      onChange={(e) =>
+                        handleOptionChange({
+                          googleWorkspaceCompatible: e.target.checked,
+                        })
+                      }
+                      className="w-4 h-4 text-white border-white/30 rounded bg-transparent focus:ring-white focus:ring-2 mt-1"
+                    />
+                    <div className="flex-1">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <span className="text-lg" role="img" aria-label="Bâtiment">🏢</span>
+                        <h4 className="text-sm font-bold msp-text-white">
+                          Mode Google Workspace
+                        </h4>
+                      </div>
+                      <p className="msp-text-white/80 text-xs leading-relaxed">
+                        Évite les caractères ambigus (l, 1, I, O, 0)
+                      </p>
+                    </div>
+                  </label>
                 </div>
               </div>
 
-              {/* Google Workspace - Placé juste après la longueur */}
-              <div className="msp-card border-2 border-white/20 p-6">
-                <label className="flex items-start space-x-4 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={options.googleWorkspaceCompatible}
-                    onChange={(e) =>
-                      handleOptionChange({
-                        googleWorkspaceCompatible: e.target.checked,
-                      })
-                    }
-                    className="w-5 h-5 text-white border-white/30 rounded bg-transparent focus:ring-white focus:ring-2 mt-2"
-                  />
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-3 mb-3">
-                      <span className="text-2xl" role="img" aria-label="Bâtiment">🏢</span>
-                      <div>
-                        <h4 className="text-lg font-bold msp-text-white">
-                          Mode Google Workspace
-                        </h4>
-                        <p className="msp-text-white/80 text-sm">
-                          Évite les caractères ambigus (l, 1, I, O, 0)
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </label>
-              </div>
-
-              {/* Types de caractères */}
-              <div className="msp-card p-6">
-                <h4 className="text-xl font-bold msp-text-white mb-4">
+              {/* Types de caractères en grille compacte */}
+              <div className="msp-card p-4">
+                <h4 className="text-lg font-bold msp-text-white mb-3">
                   Types de caractères
                 </h4>
-                <fieldset className="space-y-4">
+                <fieldset className="grid grid-cols-2 gap-2">
                   <legend className="sr-only">Types de caractères à inclure</legend>
                   {[
                     {
@@ -372,7 +371,7 @@ export default function PasswordGeneratorV2() {
                   ].map(({ key, label, desc, icon }) => (
                     <label
                       key={key}
-                      className="flex items-center space-x-3 p-3 bg-white/5 border border-white/10 rounded-xl hover:border-white/20 cursor-pointer transition-colors"
+                      className="flex items-center space-x-2 p-2 bg-white/5 border border-white/10 rounded-lg hover:border-white/20 cursor-pointer transition-colors"
                     >
                       <input
                         type="checkbox"
@@ -382,14 +381,14 @@ export default function PasswordGeneratorV2() {
                         onChange={(e) =>
                           handleOptionChange({ [key]: e.target.checked })
                         }
-                        className="w-5 h-5 text-white border-white/30 rounded bg-transparent focus:ring-white focus:ring-2"
+                        className="w-4 h-4 text-white border-white/30 rounded bg-transparent focus:ring-white focus:ring-2"
                       />
-                      <span className="text-xl" role="img" aria-hidden="true">{icon}</span>
-                      <div className="flex-1">
-                        <div className="msp-text-white font-medium">
+                      <span className="text-sm" role="img" aria-hidden="true">{icon}</span>
+                      <div className="flex-1 min-w-0">
+                        <div className="msp-text-white font-medium text-sm truncate">
                           {label}
                         </div>
-                        <div className="msp-text-white/60 text-sm">
+                        <div className="msp-text-white/60 text-xs">
                           {desc}
                         </div>
                       </div>
