@@ -4,32 +4,39 @@
 
 @layer base {
   :root {
-    /* Palette officielle MySecurePassword - Optimisée pour l'accessibilité WCAG 2.1 */
-    --background: 210 100% 5%; /* #000814 - Bleu très foncé */
-    --foreground: 47 100% 88%; /* Jaune clair pour contraste optimal */
-    --card: 211 100% 12%; /* #001D3D - Bleu nuit pour cartes */
-    --card-foreground: 47 100% 85%;
-    --popover: 211 100% 12%;
-    --popover-foreground: 47 100% 85%;
-    --primary: 47 100% 50%; /* #FFC300 - Jaune or principal */
-    --primary-foreground: 210 100% 8%; /* Bleu foncé pour texte sur jaune */
-    --secondary: 210 100% 20%; /* #003566 - Bleu intense */
-    --secondary-foreground: 47 100% 85%;
-    --muted: 211 100% 18%; 
-    --muted-foreground: 47 100% 70%;
-    --accent: 48 100% 53%; /* #FFD60A - Jaune vif secondaire */
-    --accent-foreground: 210 100% 8%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 211 100% 25%; /* Bordures plus visibles pour l'accessibilité */
-    --input: 211 100% 15%;
-    --ring: 47 100% 50%; /* Focus ring jaune */
-    --radius: 1rem; /* Bordures plus arrondies */
+    /* Palette MySecurePassword V2 - Texte blanc et dégradés bleu-violet */
+    --background: 210 100% 3%; /* #000814 - Bleu très foncé principal */
+    --foreground: 0 0% 100%; /* Blanc pur pour tout le texte */
     
-    /* Variables custom MSP pour glassmorphism */
-    --glass-primary: 47 100% 50% / 0.1;
-    --glass-secondary: 211 100% 25% / 0.2;
-    --glass-background: 211 100% 8% / 0.8;
+    /* Sections définies */
+    --header-start: 241 76% 70%; /* #6A82FB - Bleu clair pour dégradé */
+    --header-end: 341 91% 67%; /* #FC5C7D - Violet pour dégradé */
+    --generator-bg: 211 100% 12%; /* #001D3D - Bleu nuit section générateur */
+    --advantages-bg: 210 100% 20%; /* #003566 - Bleu intense section avantages */
+    --footer-bg: 210 100% 3%; /* #000814 - Bleu très foncé footer */
+    
+    /* Logo et accents */
+    --logo-bg: 47 100% 50%; /* #FFC300 - Jaune or UNIQUEMENT pour logo */
+    --logo-text: 210 100% 8%; /* Texte foncé sur logo jaune */
+    --accent-yellow: 48 100% 53%; /* #FFD60A - Jaune vif usage limité */
+    
+    /* Composants UI */
+    --card: 211 100% 12%;
+    --card-foreground: 0 0% 100%;
+    --button-primary: 0 0% 100%; /* Boutons blancs */
+    --button-primary-foreground: 211 100% 12%; /* Texte foncé sur boutons blancs */
+    --button-gradient-start: 241 76% 70%; /* Dégradé boutons si besoin */
+    --button-gradient-end: 341 91% 67%;
+    
+    /* Bordures et focus */
+    --border: 0 0% 100% / 0.2; /* Bordures blanches translucides */
+    --input: 211 100% 15%;
+    --ring: 0 0% 100%; /* Focus ring blanc */
+    --radius: 1rem;
+    
+    /* Variables utilitaires */
+    --shadow-soft: 0 8px 32px rgb(0 8 20 / 0.6);
+    --glass-overlay: 0 0% 100% / 0.05;
   }
 
   .dark {
@@ -280,5 +287,81 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
+  }
+
+  /* Classes spécifiques MySecurePassword V2 */
+  .msp-header {
+    background: linear-gradient(135deg, hsl(var(--header-start)), hsl(var(--header-end)));
+    box-shadow: var(--shadow-soft);
+  }
+
+  .msp-logo {
+    background: hsl(var(--logo-bg));
+    color: hsl(var(--logo-text));
+    border-radius: var(--radius);
+    box-shadow: 0 4px 16px hsl(var(--logo-bg) / 0.3);
+  }
+
+  .msp-text-white {
+    color: hsl(var(--foreground));
+  }
+
+  .msp-button-white {
+    background: hsl(var(--button-primary));
+    color: hsl(var(--button-primary-foreground));
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
+  }
+
+  .msp-button-white:hover {
+    background: hsl(var(--foreground) / 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgb(0 8 20 / 0.4);
+  }
+
+  .msp-button-gradient {
+    background: linear-gradient(135deg, hsl(var(--button-gradient-start)), hsl(var(--button-gradient-end)));
+    color: hsl(var(--foreground));
+    border: none;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
+  }
+
+  .msp-button-gradient:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgb(106 130 251 / 0.3);
+  }
+
+  .msp-section-generator {
+    background: hsl(var(--generator-bg));
+    color: hsl(var(--foreground));
+  }
+
+  .msp-section-advantages {
+    background: hsl(var(--advantages-bg));
+    color: hsl(var(--foreground));
+  }
+
+  .msp-section-footer {
+    background: hsl(var(--footer-bg));
+    color: hsl(var(--foreground));
+  }
+
+  .msp-card {
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    color: hsl(var(--foreground));
+  }
+
+  .msp-glass-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, hsl(var(--glass-overlay)), transparent);
+    pointer-events: none;
   }
 }

@@ -4,25 +4,25 @@ import AppPresentationV2 from "@/components/presentation/AppPresentationV2";
 import FooterV2 from "@/components/layout/FooterV2";
 import TransitionWrapper from "@/components/animations/TransitionWrapper";
 
-export default function HomePage() {
+export default function HomePageV2() {
   return (
     <div className="min-h-screen">
-      {/* Header avec dégradé bleu-violet et logo jaune */}
+      {/* Header avec dégradé bleu-violet */}
       <TransitionWrapper>
         <HeaderV2 />
       </TransitionWrapper>
 
-      {/* Section Générateur - Bleu nuit avec texte blanc */}
+      {/* Section Générateur - Bleu nuit */}
       <TransitionWrapper delay={200}>
         <PasswordGeneratorV2 />
       </TransitionWrapper>
 
-      {/* Section Avantages - Bleu intense avec texte blanc */}
+      {/* Section Avantages - Bleu intense */}
       <TransitionWrapper delay={400}>
         <AppPresentationV2 />
       </TransitionWrapper>
 
-      {/* Footer - Bleu très foncé avec texte blanc */}
+      {/* Footer - Bleu très foncé */}
       <TransitionWrapper delay={600}>
         <FooterV2 />
       </TransitionWrapper>

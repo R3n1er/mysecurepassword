@@ -42,7 +42,7 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Palette MSP
+        // Palette MSP V2 - Texte blanc et dégradés
         msp: {
           dark: "#000814",
           navy: "#001D3D", 
@@ -50,6 +50,9 @@ const config: Config = {
           gold: "#FFC300",
           yellow: "#FFD60A",
         },
+        // Dégradés header
+        "header-start": "#6A82FB",
+        "header-end": "#FC5C7D",
       },
       borderRadius: {
         lg: "var(--radius)",
