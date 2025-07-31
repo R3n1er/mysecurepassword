@@ -63,10 +63,27 @@ const metadata = {
         address: false,
         telephone: false
     },
-    metadataBase: new URL("http://localhost:3000"),
+    metadataBase: new URL("http://localhost:3001"),
     alternates: {
         canonical: "/"
     },
+    icons: {
+        icon: [
+            {
+                url: "/favicon.png",
+                sizes: "32x32",
+                type: "image/png"
+            },
+            {
+                url: "/favicon.png",
+                sizes: "16x16",
+                type: "image/png"
+            }
+        ],
+        apple: "/favicon.png",
+        shortcut: "/favicon.png"
+    },
+    manifest: "/site.webmanifest",
     openGraph: {
         title: "MySecurePassword - Générateur de mots de passe sécurisés",
         description: "Générateur de mots de passe sécurisés compatibles avec Google Workspace. Créez des mots de passe forts et sécurisés en quelques clics.",
@@ -110,17 +127,18 @@ function RootLayout({ children }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("html", {
         lang: "fr",
         className: "scroll-smooth",
+        suppressHydrationWarning: true,
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("body", {
             className: `${__TURBOPACK__imported__module__$5b$next$5d2f$internal$2f$font$2f$google$2f$inter_9e72d27f$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].variable} antialiased`,
             children: children
         }, void 0, false, {
             fileName: "[project]/src/app/layout.tsx",
-            lineNumber: 82,
+            lineNumber: 91,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/layout.tsx",
-        lineNumber: 81,
+        lineNumber: 90,
         columnNumber: 5
     }, this);
 }

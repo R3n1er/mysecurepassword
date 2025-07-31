@@ -1,0 +1,20 @@
+{
+  "name": "MySecurePassword",
+  "short_name": "MSP",
+  "description": "Générateur de mots de passe sécurisés",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#FFC300",
+  "background_color": "#000814",
+  "display": "standalone"
+}

@@ -28,10 +28,19 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("http://localhost:3000"),
+  metadataBase: new URL("http://localhost:3001"),
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/favicon.png",
+    shortcut: "/favicon.png",
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     title: "MySecurePassword - Générateur de mots de passe sécurisés",
     description:
@@ -78,7 +87,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="scroll-smooth">
+    <html lang="fr" className="scroll-smooth" suppressHydrationWarning>
       <body className={`${inter.variable} antialiased`}>{children}</body>
     </html>
   );
