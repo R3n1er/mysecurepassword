@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Github, Mail, Shield, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -34,8 +35,14 @@ export default function FooterV2() {
           {/* Informations */}
           <div className="space-y-6">
             <div className="flex items-center gap-4">
-              <div className="msp-logo w-16 h-16 flex items-center justify-center text-lg font-bold">
-                MSP
+              <div className="flex items-center justify-center flex-shrink-0">
+                <Image
+                  src="/mysecurepassword-logo-v2-min.png"
+                  alt="MySecurePassword Logo"
+                  width={64}
+                  height={64}
+                  className="w-12 h-12 object-contain"
+                />
               </div>
               <div>
                 <h3 className="text-2xl font-bold msp-text-white">

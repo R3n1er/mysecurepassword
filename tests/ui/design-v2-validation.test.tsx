@@ -197,12 +197,15 @@ describe('Design V2 - Validation du cahier des charges', () => {
       render(<AppPresentationV2 />);
       render(<FooterV2 />);
       
-      // Vérifier la présence des classes MSP
+      // Vérifier la présence des classes MSP (logo simple maintenant)
       expect(document.querySelector('.msp-header')).toBeInTheDocument();
-      expect(document.querySelector('.msp-logo')).toBeInTheDocument();
       expect(document.querySelector('.msp-section-generator')).toBeInTheDocument();
       expect(document.querySelector('.msp-section-advantages')).toBeInTheDocument();
       expect(document.querySelector('.msp-section-footer')).toBeInTheDocument();
+      expect(document.querySelector('.msp-card')).toBeInTheDocument();
+      
+      // Vérifier la présence des logos image sans fond jaune
+      expect(screen.getAllByAltText('MySecurePassword Logo').length).toBeGreaterThan(0);
     });
 
     it('devrait avoir des boutons avec les bonnes classes', () => {
