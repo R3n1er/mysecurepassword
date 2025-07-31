@@ -276,104 +276,41 @@ export default function PasswordGeneratorV2() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Longueur */}
-                <div className="msp-card p-6">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-xl font-bold msp-text-white">
-                        Longueur
-                      </h4>
-                      <div className="px-4 py-2 bg-white/10 border border-white/20 rounded-xl">
-                        <span className="msp-text-white font-bold text-lg">
-                          {options.length}
-                        </span>
-                        <span className="msp-text-white/80 text-sm ml-2">caractères</span>
-                      </div>
-                    </div>
-                    <input
-                      type="range"
-                      min="8"
-                      max="64"
-                      value={options.length}
-                      onChange={(e) =>
-                        handleOptionChange({ length: parseInt(e.target.value) })
-                      }
-                      className="w-full h-3 bg-white/20 rounded-full appearance-none cursor-pointer"
-                      aria-label={`Longueur du mot de passe: ${options.length} caractères`}
-                    />
-                    <div className="flex justify-between text-sm msp-text-white/60">
-                      <span>8 min</span>
-                      <span>64 max</span>
+              {/* Longueur */}
+              <div className="msp-card p-6">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-xl font-bold msp-text-white">
+                      Longueur
+                    </h4>
+                    <div className="px-4 py-2 bg-white/10 border border-white/20 rounded-xl">
+                      <span className="msp-text-white font-bold text-lg">
+                        {options.length}
+                      </span>
+                      <span className="msp-text-white/80 text-sm ml-2">caractères</span>
                     </div>
                   </div>
-                </div>
-
-                {/* Types de caractères */}
-                <div className="msp-card p-6">
-                  <h4 className="text-xl font-bold msp-text-white mb-4">
-                    Types de caractères
-                  </h4>
-                  <fieldset className="space-y-4">
-                    <legend className="sr-only">Types de caractères à inclure</legend>
-                    {[
-                      {
-                        key: "includeUppercase",
-                        label: "Majuscules",
-                        desc: "A-Z",
-                        icon: "🔤",
-                      },
-                      {
-                        key: "includeLowercase",
-                        label: "Minuscules",
-                        desc: "a-z",
-                        icon: "🔡",
-                      },
-                      {
-                        key: "includeNumbers",
-                        label: "Chiffres",
-                        desc: "0-9",
-                        icon: "🔢",
-                      },
-                      {
-                        key: "includeSymbols",
-                        label: "Symboles",
-                        desc: "!@#",
-                        icon: "⚡",
-                      },
-                    ].map(({ key, label, desc, icon }) => (
-                      <label
-                        key={key}
-                        className="flex items-center space-x-3 p-3 bg-white/5 border border-white/10 rounded-xl hover:border-white/20 cursor-pointer transition-colors"
-                      >
-                        <input
-                          type="checkbox"
-                          checked={
-                            options[key as keyof PasswordOptions] as boolean
-                          }
-                          onChange={(e) =>
-                            handleOptionChange({ [key]: e.target.checked })
-                          }
-                          className="w-5 h-5 text-white border-white/30 rounded bg-transparent focus:ring-white focus:ring-2"
-                        />
-                        <span className="text-xl" role="img" aria-hidden="true">{icon}</span>
-                        <div className="flex-1">
-                          <div className="msp-text-white font-medium">
-                            {label}
-                          </div>
-                          <div className="msp-text-white/60 text-sm">
-                            {desc}
-                          </div>
-                        </div>
-                      </label>
-                    ))}
-                  </fieldset>
+                  <input
+                    type="range"
+                    min="8"
+                    max="64"
+                    value={options.length}
+                    onChange={(e) =>
+                      handleOptionChange({ length: parseInt(e.target.value) })
+                    }
+                    className="w-full h-3 bg-white/20 rounded-full appearance-none cursor-pointer"
+                    aria-label={`Longueur du mot de passe: ${options.length} caractères`}
+                  />
+                  <div className="flex justify-between text-sm msp-text-white/60">
+                    <span>8 min</span>
+                    <span>64 max</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Google Workspace */}
-              <div className="msp-card border-2 border-white/20 p-8">
-                <label className="flex items-start space-x-6 cursor-pointer">
+              {/* Google Workspace - Placé juste après la longueur */}
+              <div className="msp-card border-2 border-white/20 p-6">
+                <label className="flex items-start space-x-4 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={options.googleWorkspaceCompatible}
@@ -382,26 +319,83 @@ export default function PasswordGeneratorV2() {
                         googleWorkspaceCompatible: e.target.checked,
                       })
                     }
-                    className="w-6 h-6 text-white border-white/30 rounded bg-transparent focus:ring-white focus:ring-2 mt-2"
+                    className="w-5 h-5 text-white border-white/30 rounded bg-transparent focus:ring-white focus:ring-2 mt-2"
                   />
                   <div className="flex-1">
-                    <div className="flex items-center space-x-3 mb-4">
-                      <span className="text-3xl" role="img" aria-label="Bâtiment">🏢</span>
+                    <div className="flex items-center space-x-3 mb-3">
+                      <span className="text-2xl" role="img" aria-label="Bâtiment">🏢</span>
                       <div>
-                        <h4 className="text-xl font-bold msp-text-white">
+                        <h4 className="text-lg font-bold msp-text-white">
                           Mode Google Workspace
                         </h4>
-                        <p className="msp-text-white/80 text-sm mt-1">
-                          Évite les caractères ambigus
+                        <p className="msp-text-white/80 text-sm">
+                          Évite les caractères ambigus (l, 1, I, O, 0)
                         </p>
                       </div>
                     </div>
-                    <p className="msp-text-white/70 leading-relaxed">
-                      Optimise la compatibilité en excluant les caractères
-                      problématiques (l, 1, I, O, 0) pour Google Workspace.
-                    </p>
                   </div>
                 </label>
+              </div>
+
+              {/* Types de caractères */}
+              <div className="msp-card p-6">
+                <h4 className="text-xl font-bold msp-text-white mb-4">
+                  Types de caractères
+                </h4>
+                <fieldset className="space-y-4">
+                  <legend className="sr-only">Types de caractères à inclure</legend>
+                  {[
+                    {
+                      key: "includeUppercase",
+                      label: "Majuscules",
+                      desc: "A-Z",
+                      icon: "🔤",
+                    },
+                    {
+                      key: "includeLowercase",
+                      label: "Minuscules",
+                      desc: "a-z",
+                      icon: "🔡",
+                    },
+                    {
+                      key: "includeNumbers",
+                      label: "Chiffres",
+                      desc: "0-9",
+                      icon: "🔢",
+                    },
+                    {
+                      key: "includeSymbols",
+                      label: "Symboles",
+                      desc: "!@#",
+                      icon: "⚡",
+                    },
+                  ].map(({ key, label, desc, icon }) => (
+                    <label
+                      key={key}
+                      className="flex items-center space-x-3 p-3 bg-white/5 border border-white/10 rounded-xl hover:border-white/20 cursor-pointer transition-colors"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={
+                          options[key as keyof PasswordOptions] as boolean
+                        }
+                        onChange={(e) =>
+                          handleOptionChange({ [key]: e.target.checked })
+                        }
+                        className="w-5 h-5 text-white border-white/30 rounded bg-transparent focus:ring-white focus:ring-2"
+                      />
+                      <span className="text-xl" role="img" aria-hidden="true">{icon}</span>
+                      <div className="flex-1">
+                        <div className="msp-text-white font-medium">
+                          {label}
+                        </div>
+                        <div className="msp-text-white/60 text-sm">
+                          {desc}
+                        </div>
+                      </div>
+                    </label>
+                  ))}
+                </fieldset>
               </div>
             </div>
           </div>
