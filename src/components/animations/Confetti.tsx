@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useIsClient } from "@/hooks/useIsClient";
 
 interface ConfettiPiece {
   id: number;
@@ -30,6 +31,7 @@ const colors = [
 
 export default function Confetti({ isActive, onComplete }: ConfettiProps) {
   const [confetti, setConfetti] = useState<ConfettiPiece[]>([]);
+  const isClient = useIsClient();
 
   useEffect(() => {
     if (!isActive) {
@@ -37,10 +39,13 @@ export default function Confetti({ isActive, onComplete }: ConfettiProps) {
       return;
     }
 
-    // Créer 50 confettis
+    // Créer 50 confettis (seulement côté client pour éviter l'hydratation)
+    if (!isClient) return;
+    
+    const windowWidth = typeof window !== 'undefined' ? window.innerWidth : 1200;
     const newConfetti: ConfettiPiece[] = Array.from({ length: 50 }, (_, i) => ({
       id: i,
-      x: Math.random() * window.innerWidth,
+      x: Math.random() * windowWidth,
       y: -20,
       rotation: Math.random() * 360,
       scale: Math.random() * 0.5 + 0.5,
@@ -55,6 +60,7 @@ export default function Confetti({ isActive, onComplete }: ConfettiProps) {
 
     // Animation
     const animate = () => {
+      const windowHeight = typeof window !== 'undefined' ? window.innerHeight : 800;
       setConfetti((prev) =>
         prev
           .map((piece) => ({
@@ -67,7 +73,7 @@ export default function Confetti({ isActive, onComplete }: ConfettiProps) {
               y: piece.velocity.y + 0.1, // Gravité
             },
           }))
-          .filter((piece) => piece.y < window.innerHeight + 50)
+          .filter((piece) => piece.y < windowHeight + 50)
       );
     };
 
@@ -84,9 +90,10 @@ export default function Confetti({ isActive, onComplete }: ConfettiProps) {
       clearInterval(interval);
       clearTimeout(timeout);
     };
-  }, [isActive, onComplete]);
+  }, [isActive, onComplete, isClient]);
 
-  if (!isActive || confetti.length === 0) return null;
+  // Ne pas rendre côté serveur pour éviter l'hydratation
+  if (!isClient || !isActive || confetti.length === 0) return null;
 
   return (
     <div className="fixed inset-0 pointer-events-none z-50">
