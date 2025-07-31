@@ -4,7 +4,7 @@ import { useState, useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Copy, RefreshCw, Shield, Settings, Check, Lock } from "lucide-react";
+import { Copy, RefreshCw, Shield, Settings, Check } from "lucide-react";
 import Confetti from "@/components/animations/Confetti";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -224,7 +224,7 @@ export default function PasswordGenerator() {
                   type="text"
                   value={password}
                   readOnly
-                  placeholder="Cliquez sur 'Générer' pour créer un mot de passe sécurisé..."
+                  placeholder="Cliquez sur &apos;Générer&apos; pour créer un mot de passe sécurisé..."
                   aria-label="Mot de passe généré"
                   aria-describedby="password-description"
                   className="w-full h-20 text-xl font-mono bg-transparent border-0 text-foreground placeholder:text-muted-foreground/70 focus:ring-0 focus:outline-none px-8 focus-visible-enhanced text-accessible-size"
@@ -345,7 +345,7 @@ export default function PasswordGenerator() {
                       Longueur du mot de passe
                     </h3>
                     <p className="text-sm text-muted-foreground mt-1">
-                      Plus c'est long, plus c'est sécurisé
+                      Plus c&apos;est long, plus c&apos;est sécurisé
                     </p>
                   </div>
                   <div className="px-4 py-3 bg-gradient-to-r from-primary/20 to-accent/15 border border-primary/30 rounded-2xl">
@@ -377,7 +377,7 @@ export default function PasswordGenerator() {
                     <span className="font-medium">64 caractères (maximum)</span>
                   </div>
                   <div className="text-xs text-muted-foreground/80">
-                    Recommandé: 12-16 caractères pour un équilibre sécurité/facilité d'usage
+                    Recommandé: 12-16 caractères pour un équilibre sécurité/facilité d&apos;usage
                   </div>
                 </div>
               </div>

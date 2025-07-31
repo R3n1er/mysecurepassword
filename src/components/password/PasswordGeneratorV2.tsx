@@ -4,7 +4,7 @@ import { useState, useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Copy, RefreshCw, Shield, Settings, Check, Lock } from "lucide-react";
+import { Copy, RefreshCw, Shield, Settings, Check } from "lucide-react";
 import Confetti from "@/components/animations/Confetti";
 import { motion } from "framer-motion";
 import ClientOnly from "@/components/common/ClientOnly";
@@ -86,7 +86,7 @@ export default function PasswordGeneratorV2() {
         setShowConfetti(true);
       }
     },
-    [options]
+    [options, isClient]
   );
 
   const handleOptionChange = useCallback(

@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Copy, RefreshCw, Shield, Settings, Check } from "lucide-react";
 import Confetti from "@/components/animations/Confetti";
-import Image from "next/image";
+
 
 interface PasswordOptions {
   length: number;
