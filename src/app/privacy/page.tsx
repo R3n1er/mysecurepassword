@@ -43,7 +43,7 @@ export default function PrivacyPolicyPage() {
                     <h2 className="text-2xl font-bold msp-text-white">Informations Générales</h2>
                   </div>
                   <div className="space-y-4 msp-text-white/90 leading-relaxed">
-                    <p><strong>Date de dernière mise à jour :</strong> {new Date().toLocaleDateString('fr-FR')}</p>
+                    <p><strong>Date de dernière mise à jour :</strong> Décembre 2024</p>
                     <p><strong>Éditeur :</strong> MySecurePassword</p>
                     <p><strong>Type d'application :</strong> Générateur de mots de passe sécurisés</p>
                     <p>

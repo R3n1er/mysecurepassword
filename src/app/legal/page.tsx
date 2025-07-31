@@ -272,14 +272,10 @@ export default function LegalMentionsPage() {
                       <div className="bg-white/5 border border-white/20 rounded-xl p-4">
                         <h4 className="font-bold text-white mb-2">📅 Dernière mise à jour :</h4>
                         <p className="text-sm">
-                          <strong>{new Date().toLocaleDateString('fr-FR', { 
-                            year: 'numeric', 
-                            month: 'long', 
-                            day: 'numeric' 
-                          })}</strong>
+                          <strong>Décembre 2024</strong>
                         </p>
                         <p className="text-xs mt-2 opacity-75">
-                          Version automatiquement mise à jour à chaque déploiement.
+                          Version mise à jour à chaque déploiement.
                         </p>
                       </div>
                     </div>

@@ -8,6 +8,7 @@ import { Copy, RefreshCw, Shield, Settings, Check, Lock } from "lucide-react";
 import Confetti from "@/components/animations/Confetti";
 import { motion } from "framer-motion";
 import ClientOnly from "@/components/common/ClientOnly";
+import { useIsClient } from "@/hooks/useIsClient";
 
 interface PasswordOptions {
   length: number;
@@ -23,6 +24,7 @@ export default function PasswordGeneratorV2() {
   const [copied, setCopied] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const isClient = useIsClient();
   const [showConfetti, setShowConfetti] = useState(false);
 
   const [options, setOptions] = useState<PasswordOptions>({
@@ -65,7 +67,7 @@ export default function PasswordGeneratorV2() {
       }
 
       let result = "";
-      if (typeof window !== "undefined" && window.crypto) {
+      if (isClient && window.crypto) {
         const array = new Uint8Array(options.length);
         window.crypto.getRandomValues(array);
         for (let i = 0; i < options.length; i++) {
@@ -103,7 +105,7 @@ export default function PasswordGeneratorV2() {
   );
 
   const copyToClipboard = async () => {
-    if (!password || typeof window === "undefined") return;
+    if (!password || !isClient) return;
 
     try {
       if (navigator.clipboard) {

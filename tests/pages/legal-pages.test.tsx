@@ -74,11 +74,10 @@ describe('Pages Légales', () => {
       expect(icons.length).toBeGreaterThan(5);
     });
 
-    it('devrait afficher la date actuelle', () => {
+    it('devrait afficher la date de mise à jour', () => {
       render(<PrivacyPolicyPage />);
       
-      const currentDate = new Date().toLocaleDateString('fr-FR');
-      expect(screen.getByText(currentDate)).toBeInTheDocument();
+      expect(screen.getByText('Décembre 2024')).toBeInTheDocument();
     });
   });
 
@@ -137,12 +136,7 @@ describe('Pages Légales', () => {
     it('devrait afficher la date de mise à jour', () => {
       render(<LegalMentionsPage />);
       
-      const currentDate = new Date().toLocaleDateString('fr-FR', { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
-      });
-      expect(screen.getByText(currentDate)).toBeInTheDocument();
+      expect(screen.getByText('Décembre 2024')).toBeInTheDocument();
     });
   });
 
