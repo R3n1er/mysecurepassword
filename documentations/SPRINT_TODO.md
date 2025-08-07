@@ -16,6 +16,10 @@ Configuration du favicon et adaptation des couleurs selon le logo MySecurePasswo
 - [x] Ajout de l'image `msp-favicon.png` dans le dossier `images/`
 - [x] Ajout de l'image `logo-mysecurepassword.png` dans le dossier `images/`
 - [x] Analyse des couleurs du logo (bleu foncé + jaune)
+- [x] **NOUVEAU** : Résolution problème favicon manquant (01/08/2025)
+- [x] **NOUVEAU** : Suppression conflit favicon.ico dans src/app/
+- [x] **NOUVEAU** : Tests de validation favicon (favicon-fix.test.tsx + integration)
+- [x] **NOUVEAU** : Favicon correctement servi sur /favicon.png (HTTP 200 OK)
 
 ### Analyse des Couleurs
 

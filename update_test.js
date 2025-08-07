@@ -1,0 +1,1 @@
+const fs = require("fs"); const content = fs.readFileSync("tests/components/GoogleWorkspace-Strategy.test.tsx", "utf8"); const newContent = content.replace("évite les caractères ambigus", "évite les caractères non compatibles"); fs.writeFileSync("tests/components/GoogleWorkspace-Strategy.test.tsx", newContent); console.log("Test mis à jour");

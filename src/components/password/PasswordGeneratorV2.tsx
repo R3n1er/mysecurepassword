@@ -337,7 +337,7 @@ export default function PasswordGeneratorV2() {
                         </h4>
                       </div>
                       <p className="msp-text-white/80 text-xs leading-relaxed">
-                        Optimisé pour Google Workspace : évite les caractères ambigus (l, 1, I, O, 0) et les symboles problématiques (/~`)
+                        Optimisé pour Google Workspace : évite les caractères non compatibles (l, 1, I, O, 0) et les symboles problématiques (/~`)
                       </p>
                     </div>
                   </label>

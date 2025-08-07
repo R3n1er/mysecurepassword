@@ -1,0 +1,1 @@
+const fs = require("fs"); const content = fs.readFileSync("src/components/password/PasswordGeneratorV2.tsx", "utf8"); const newContent = content.replace("évite les caractères ambigus", "évite les caractères non compatibles"); fs.writeFileSync("src/components/password/PasswordGeneratorV2.tsx", newContent); console.log("Modification effectuée");
