@@ -1,7 +1,6 @@
 describe('Performance Tests', () => {
   it('should render quickly', () => {
     const startTime = performance.now();
-    // Simple performance test
     const endTime = performance.now();
     expect(endTime - startTime).toBeLessThan(100);
   });

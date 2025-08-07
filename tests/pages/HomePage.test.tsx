@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import HomePage from "../../src/app/page";
 
 // Mock du composant PasswordGenerator
-vi.mock("@/components/password/PasswordGenerator", () => ({
+vi.mock("@/components/password/PasswordGeneratorV2", () => ({
   default: () => (
     <div data-testid="password-generator">
       <h1>MySecurePassword</h1>
@@ -20,7 +20,7 @@ describe("HomePage", () => {
     expect(screen.getByTestId("password-generator")).toBeInTheDocument();
   });
 
-  it("devrait contenir le composant PasswordGenerator", () => {
+  it("devrait contenir le composant PasswordGeneratorV2", () => {
     render(<HomePage />);
 
     expect(screen.getByText("MySecurePassword")).toBeInTheDocument();

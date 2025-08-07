@@ -6,7 +6,7 @@ MySecurePassword est spécialement conçu pour générer des mots de passe 100% 
 
 ## 🔍 Caractères Problématiques Identifiés
 
-### Caractères Similaires (Exclus par défaut)
+### Caractères Similaires (Exclus pour éviter la confusion)
 
 - `l` (lettre l minuscule) - confondu avec `1` (chiffre)
 - `1` (chiffre un) - confondu avec `l` (lettre)
@@ -14,17 +14,17 @@ MySecurePassword est spécialement conçu pour générer des mots de passe 100% 
 - `O` (lettre O majuscule) - confondu avec `0` (zéro)
 - `0` (zéro) - confondu avec `O` (lettre)
 
-### Caractères Ambigus (Exclus par défaut)
+### Caractères Réservés dans les Systèmes Backend Google
 
-- `{ }` (accolades)
-- `[ ]` (crochets)
-- `( )` (parenthèses)
-- `/ \` (barres obliques)
-- `' "` (guillemets)
-- `` ` `` (backtick)
-- `~` (tilde)
-- `, ; :` (ponctuation)
-- `. < >` (ponctuation et comparaison)
+- `@` - utilisé pour le passage de paramètres
+- `&` - utilisé pour le passage de paramètres
+- `#` - utilisé pour les commentaires
+- `:` - utilisé pour les commentaires et paramètres
+
+### Caractères Non Permis
+
+- **Accents et diacritiques** - Non permis dans les mots de passe Google Workspace
+- **Caractères spéciaux complexes** - Peuvent causer des problèmes de compatibilité
 
 ## ✅ Caractères Compatibles Google Workspace
 
@@ -37,17 +37,22 @@ MySecurePassword est spécialement conçu pour générer des mots de passe 100% 
 
 - **Chiffres** : 0-9 (sauf 0 et 1)
 
-### Symboles Sécurisés
+### Symboles Sécurisés (Mode Google Workspace)
+
+- `! % ^ * ( ) _ + - =`
+
+### Symboles Standard (Mode Normal)
 
 - `! @ # $ % ^ & * ( ) _ + - =`
 
 ## 🔧 Configuration par Défaut
 
-L'option **"Compatibilité Google Workspace"** est activée par défaut et :
+L'option **"Compatibilité Google Workspace"** est désactivée par défaut et :
 
-1. **Exclut automatiquement** tous les caractères problématiques
-2. **Utilise uniquement** les symboles 100% compatibles
-3. **Désactive** les options manuelles d'exclusion pour éviter la confusion
+1. **Exclut les caractères similaires** (l,1,I,O,0) pour éviter la confusion
+2. **Exclut les symboles réservés** (@&#:) dans les systèmes backend Google
+3. **Utilise uniquement** les symboles sécurisés (!%^*()_+-=)
+4. **Garantit la compatibilité** avec les App Passwords (16 caractères recommandés)
 
 ## 🎨 Interface Utilisateur
 
@@ -69,25 +74,26 @@ L'option **"Compatibilité Google Workspace"** est activée par défaut et :
 ### Mots de passe générés avec Google Workspace activé :
 
 ```
-✅ Compatible : K9m#nP2$vX7qR
-✅ Compatible : H5j@kL8%wY3tN
-✅ Compatible : B4f#gM6&xZ1sA
+✅ Compatible : K9m!nP2%vX7qR
+✅ Compatible : H5j^kL8*wY3tN
+✅ Compatible : B4f!gM6+xZ2sA
 ```
 
 ### Mots de passe générés sans Google Workspace :
 
 ```
-❌ Risqué : K9m#nP2$vX7qR{l}
-❌ Risqué : H5j@kL8%wY3tN[O]
-❌ Risqué : B4f#gM6&xZ1sA(0)
+⚠️ Risqué : K9m@nP2#vX7qR (contient @ et #)
+⚠️ Risqué : H5j&kL8:wY3tN (contient & et :)
+⚠️ Risqué : B4f#gM6&xZ1sA (contient l, 1, # et &)
 ```
 
 ## 🚀 Avantages
 
-1. **Zéro erreur** lors de la création de comptes Google Workspace
-2. **Compatibilité maximale** avec tous les services Google
-3. **Interface intuitive** avec option par défaut sécurisée
-4. **Flexibilité** pour les utilisateurs avancés
+1. **Compatibilité maximale** avec Google Workspace et ses systèmes backend
+2. **Évite les caractères réservés** (@&#:) qui peuvent causer des erreurs
+3. **Optimisé pour les App Passwords** (16 caractères recommandés)
+4. **Compatible avec 2-Step Verification** et les applications externes
+5. **Pas d'accents** ou de caractères diacritiques problématiques
 
 ## 📋 Checklist de Validation
 
