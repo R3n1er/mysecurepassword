@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import PasswordGenerator from '@/components/password/PasswordGenerator';
+import PasswordGeneratorV2 from '@/components/password/PasswordGeneratorV2';
 import { ScrollArrow } from '@/components/ui/scroll-arrow';
 
 describe('Accessibility Tests', () => {
-  describe('PasswordGenerator', () => {
+  describe('PasswordGeneratorV2', () => {
     it('should have proper ARIA labels', () => {
-      render(<PasswordGenerator />);
+      render(<PasswordGeneratorV2 />);
       
       expect(screen.getByRole('textbox')).toBeInTheDocument();
       expect(screen.getByRole('button', { name: /générer/i })).toBeInTheDocument();
@@ -13,7 +13,7 @@ describe('Accessibility Tests', () => {
     });
 
     it('should have proper form labels', () => {
-      render(<PasswordGenerator />);
+      render(<PasswordGeneratorV2 />);
       
       expect(screen.getByLabelText(/majuscules/i)).toBeInTheDocument();
       expect(screen.getByLabelText(/minuscules/i)).toBeInTheDocument();
@@ -22,7 +22,7 @@ describe('Accessibility Tests', () => {
     });
 
     it('should have keyboard navigation support', () => {
-      render(<PasswordGenerator />);
+      render(<PasswordGeneratorV2 />);
       
       const generateButton = screen.getByRole('button', { name: /générer/i });
       expect(generateButton).toBeInTheDocument();

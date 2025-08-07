@@ -473,24 +473,25 @@ function PasswordGeneratorV2() {
     const generatePassword = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])(async (showLoading = true, triggerConfetti = false)=>{
         if (showLoading) setIsGenerating(true);
         await new Promise((resolve)=>setTimeout(resolve, 500));
-        const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const lowercase = "abcdefghijklmnopqrstuvwxyz";
-        const numbers = "0123456789";
-        // Optimisation Google Workspace : caractères 100% compatibles (basé sur standards officiels 2024)
-        const symbols = options.googleWorkspaceCompatible ? "!@#$%^&*()-_=+[]{}|;:,.<>?" : "!@#$%^&*()-_=+[]{}|;:,.<>?/~`";
+        const charset = {
+            uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            lowercase: "abcdefghijklmnopqrstuvwxyz",
+            numbers: "0123456789",
+            // Symboles compatibles Google Workspace (évite @&#: réservés dans certains systèmes)
+            symbols: options.googleWorkspaceCompatible ? "!%^*()_+-=" : "!@#$%^&*()_+-="
+        };
         let chars = "";
-        if (options.includeUppercase) chars += uppercase;
-        if (options.includeLowercase) chars += lowercase;
-        if (options.includeNumbers) chars += numbers;
-        if (options.includeSymbols) chars += symbols;
-        if (!chars) chars = lowercase;
-        // Optimisation Google Workspace : exclusions pour éviter la confusion
+        if (options.includeUppercase) chars += charset.uppercase;
+        if (options.includeLowercase) chars += charset.lowercase;
+        if (options.includeNumbers) chars += charset.numbers;
+        if (options.includeSymbols) chars += charset.symbols;
+        if (!chars) chars = charset.lowercase;
+        // Google Workspace Compatibility: Optimisation pour compatibilité maximale
         if (options.googleWorkspaceCompatible) {
-            // Suppression des caractères visuellement similaires (Google Workspace best practices)
+            // Caractères similaires (confusion visuelle)
             chars = chars.replace(/[il1Lo0O]/g, "");
-            // Exclusion des caractères potentiellement problématiques dans certains contextes Google
-            // Note: déjà exclus des symboles mais vérification supplémentaire
-            chars = chars.replace(/[/~`]/g, "");
+        // Caractères réservés dans les systèmes backend Google exclus des symboles
+        // Accents et diacritiques non permis (déjà exclus par charset de base)
         }
         let result = "";
         if (isClient && window.crypto) {
@@ -559,22 +560,22 @@ function PasswordGeneratorV2() {
                         children: "Chargement..."
                     }, void 0, false, {
                         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                        lineNumber: 140,
+                        lineNumber: 141,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                    lineNumber: 139,
+                    lineNumber: 140,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                lineNumber: 138,
+                lineNumber: 139,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-            lineNumber: 137,
+            lineNumber: 138,
             columnNumber: 7
         }, this);
     }
@@ -590,7 +591,7 @@ function PasswordGeneratorV2() {
                             className: "msp-glass-overlay"
                         }, void 0, false, {
                             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                            lineNumber: 153,
+                            lineNumber: 154,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -605,12 +606,12 @@ function PasswordGeneratorV2() {
                                                 className: "w-6 h-6 text-white"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                lineNumber: 159,
+                                                lineNumber: 160,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                            lineNumber: 158,
+                                            lineNumber: 159,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -620,7 +621,7 @@ function PasswordGeneratorV2() {
                                                     children: "Générateur Sécurisé"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                    lineNumber: 162,
+                                                    lineNumber: 163,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -628,19 +629,19 @@ function PasswordGeneratorV2() {
                                                     children: "Chiffrement cryptographique avancé"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                    lineNumber: 165,
+                                                    lineNumber: 166,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                            lineNumber: 161,
+                                            lineNumber: 162,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                    lineNumber: 157,
+                                    lineNumber: 158,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -655,7 +656,7 @@ function PasswordGeneratorV2() {
                                                     children: "Mot de passe généré"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                    lineNumber: 174,
+                                                    lineNumber: 175,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -672,7 +673,7 @@ function PasswordGeneratorV2() {
                                                             className: "w-full h-12 text-lg font-mono bg-transparent border-0 msp-text-white placeholder:text-white/50 focus:ring-0 focus:outline-none px-6 text-center"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                            lineNumber: 178,
+                                                            lineNumber: 179,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -681,7 +682,7 @@ function PasswordGeneratorV2() {
                                                             children: password ? `Mot de passe généré de ${password.length} caractères. Utilisez le bouton copier pour le copier dans le presse-papiers.` : "Aucun mot de passe généré pour le moment."
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                            lineNumber: 188,
+                                                            lineNumber: 189,
                                                             columnNumber: 19
                                                         }, this),
                                                         password && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -696,7 +697,7 @@ function PasswordGeneratorV2() {
                                                                         className: "w-4 h-4 text-green-600 mr-1"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                        lineNumber: 204,
+                                                                        lineNumber: 205,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -704,7 +705,7 @@ function PasswordGeneratorV2() {
                                                                         children: "Copié !"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                        lineNumber: 205,
+                                                                        lineNumber: 206,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
@@ -714,7 +715,7 @@ function PasswordGeneratorV2() {
                                                                         className: "w-4 h-4 mr-1"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                        lineNumber: 209,
+                                                                        lineNumber: 210,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -722,26 +723,26 @@ function PasswordGeneratorV2() {
                                                                         children: "Copier"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                        lineNumber: 210,
+                                                                        lineNumber: 211,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                            lineNumber: 195,
+                                                            lineNumber: 196,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                    lineNumber: 177,
+                                                    lineNumber: 178,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                            lineNumber: 173,
+                                            lineNumber: 174,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$common$2f$ClientOnly$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -757,31 +758,31 @@ function PasswordGeneratorV2() {
                                                             className: "w-5 h-5 mr-3 animate-spin"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                            lineNumber: 229,
+                                                            lineNumber: 230,
                                                             columnNumber: 25
                                                         }, void 0) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Shield$3e$__["Shield"], {
                                                             className: "w-5 h-5 mr-3"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                            lineNumber: 231,
+                                                            lineNumber: 232,
                                                             columnNumber: 25
                                                         }, void 0),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: isGenerating ? "Génération en cours..." : "Générer un mot de passe sécurisé"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                            lineNumber: 233,
+                                                            lineNumber: 234,
                                                             columnNumber: 23
                                                         }, void 0)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                    lineNumber: 227,
+                                                    lineNumber: 228,
                                                     columnNumber: 21
                                                 }, void 0)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                lineNumber: 221,
+                                                lineNumber: 222,
                                                 columnNumber: 19
                                             }, void 0),
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -803,47 +804,47 @@ function PasswordGeneratorV2() {
                                                                 className: "w-5 h-5 mr-3 animate-spin"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                lineNumber: 254,
+                                                                lineNumber: 255,
                                                                 columnNumber: 25
                                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Shield$3e$__["Shield"], {
                                                                 className: "w-5 h-5 mr-3"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                lineNumber: 256,
+                                                                lineNumber: 257,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                 children: isGenerating ? "Génération en cours..." : "Générer un mot de passe sécurisé"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                lineNumber: 258,
+                                                                lineNumber: 259,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                        lineNumber: 252,
+                                                        lineNumber: 253,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                    lineNumber: 246,
+                                                    lineNumber: 247,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                lineNumber: 242,
+                                                lineNumber: 243,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                            lineNumber: 219,
+                                            lineNumber: 220,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                    lineNumber: 172,
+                                    lineNumber: 173,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -858,12 +859,12 @@ function PasswordGeneratorV2() {
                                                         className: "w-4 h-4 text-white"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                        lineNumber: 273,
+                                                        lineNumber: 274,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                    lineNumber: 272,
+                                                    lineNumber: 273,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -873,7 +874,7 @@ function PasswordGeneratorV2() {
                                                             children: "Configuration"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                            lineNumber: 276,
+                                                            lineNumber: 277,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -881,19 +882,19 @@ function PasswordGeneratorV2() {
                                                             children: "Personnalisez votre mot de passe"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                            lineNumber: 279,
+                                                            lineNumber: 280,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                    lineNumber: 275,
+                                                    lineNumber: 276,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                            lineNumber: 271,
+                                            lineNumber: 272,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -912,7 +913,7 @@ function PasswordGeneratorV2() {
                                                                         children: "Longueur"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                        lineNumber: 291,
+                                                                        lineNumber: 292,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -923,7 +924,7 @@ function PasswordGeneratorV2() {
                                                                                 children: options.length
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                                lineNumber: 295,
+                                                                                lineNumber: 296,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -931,19 +932,19 @@ function PasswordGeneratorV2() {
                                                                                 children: "car"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                                lineNumber: 298,
+                                                                                lineNumber: 299,
                                                                                 columnNumber: 25
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                        lineNumber: 294,
+                                                                        lineNumber: 295,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                lineNumber: 290,
+                                                                lineNumber: 291,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -958,7 +959,7 @@ function PasswordGeneratorV2() {
                                                                 "aria-label": `Longueur du mot de passe: ${options.length} caractères`
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                lineNumber: 301,
+                                                                lineNumber: 302,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -968,31 +969,31 @@ function PasswordGeneratorV2() {
                                                                         children: "8"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                        lineNumber: 313,
+                                                                        lineNumber: 314,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                         children: "64"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                        lineNumber: 314,
+                                                                        lineNumber: 315,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                lineNumber: 312,
+                                                                lineNumber: 313,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                        lineNumber: 289,
+                                                        lineNumber: 290,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                    lineNumber: 288,
+                                                    lineNumber: 289,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1009,7 +1010,7 @@ function PasswordGeneratorV2() {
                                                                 className: "w-4 h-4 text-white border-white/30 rounded bg-transparent focus:ring-white focus:ring-2 mt-1"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                lineNumber: 322,
+                                                                lineNumber: 323,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1025,7 +1026,7 @@ function PasswordGeneratorV2() {
                                                                                 children: "🏢"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                                lineNumber: 334,
+                                                                                lineNumber: 335,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
@@ -1033,44 +1034,44 @@ function PasswordGeneratorV2() {
                                                                                 children: "Mode Google Workspace"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                                lineNumber: 335,
+                                                                                lineNumber: 336,
                                                                                 columnNumber: 25
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                        lineNumber: 333,
+                                                                        lineNumber: 334,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                         className: "msp-text-white/80 text-xs leading-relaxed",
-                                                                        children: "Optimisé pour Google Workspace : évite les caractères ambigus (l, 1, I, O, 0) et les symboles problématiques (/~`)"
+                                                                        children: "Optimisé pour Google Workspace : évite les caractères similaires et les symboles réservés dans les systèmes backend"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                        lineNumber: 339,
+                                                                        lineNumber: 340,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                lineNumber: 332,
+                                                                lineNumber: 333,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                        lineNumber: 321,
+                                                        lineNumber: 322,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                    lineNumber: 320,
+                                                    lineNumber: 321,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                            lineNumber: 286,
+                                            lineNumber: 287,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1081,7 +1082,7 @@ function PasswordGeneratorV2() {
                                                     children: "Types de caractères"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                    lineNumber: 349,
+                                                    lineNumber: 350,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("fieldset", {
@@ -1092,7 +1093,7 @@ function PasswordGeneratorV2() {
                                                             children: "Types de caractères à inclure"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                            lineNumber: 353,
+                                                            lineNumber: 354,
                                                             columnNumber: 19
                                                         }, this),
                                                         [
@@ -1117,7 +1118,7 @@ function PasswordGeneratorV2() {
                                                             {
                                                                 key: "includeSymbols",
                                                                 label: "Symboles",
-                                                                desc: options.googleWorkspaceCompatible ? "!@#$%^&*" : "!@#$%^&*/~`",
+                                                                desc: options.googleWorkspaceCompatible ? "!%^*()_+-=" : "!@#$%^&*()_+-=",
                                                                 icon: "⚡"
                                                             }
                                                         ].map(({ key, label, desc, icon })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1132,7 +1133,7 @@ function PasswordGeneratorV2() {
                                                                         className: "w-4 h-4 text-white border-white/30 rounded bg-transparent focus:ring-white focus:ring-2"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                        lineNumber: 384,
+                                                                        lineNumber: 385,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1142,7 +1143,7 @@ function PasswordGeneratorV2() {
                                                                         children: icon
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                        lineNumber: 394,
+                                                                        lineNumber: 395,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1153,7 +1154,7 @@ function PasswordGeneratorV2() {
                                                                                 children: label
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                                lineNumber: 396,
+                                                                                lineNumber: 397,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1161,49 +1162,49 @@ function PasswordGeneratorV2() {
                                                                                 children: desc
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                                lineNumber: 399,
+                                                                                lineNumber: 400,
                                                                                 columnNumber: 25
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                        lineNumber: 395,
+                                                                        lineNumber: 396,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, key, true, {
                                                                 fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                                lineNumber: 380,
+                                                                lineNumber: 381,
                                                                 columnNumber: 21
                                                             }, this))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                                    lineNumber: 352,
+                                                    lineNumber: 353,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                            lineNumber: 348,
+                                            lineNumber: 349,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                                    lineNumber: 270,
+                                    lineNumber: 271,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                            lineNumber: 155,
+                            lineNumber: 156,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                    lineNumber: 151,
+                    lineNumber: 152,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$common$2f$ClientOnly$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -1212,23 +1213,23 @@ function PasswordGeneratorV2() {
                         onComplete: ()=>setShowConfetti(false)
                     }, void 0, false, {
                         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                        lineNumber: 413,
+                        lineNumber: 414,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-                    lineNumber: 412,
+                    lineNumber: 413,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-            lineNumber: 149,
+            lineNumber: 150,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/password/PasswordGeneratorV2.tsx",
-        lineNumber: 148,
+        lineNumber: 149,
         columnNumber: 5
     }, this);
 }

@@ -46,30 +46,31 @@ export default function PasswordGeneratorV2() {
 
       await new Promise((resolve) => setTimeout(resolve, 500));
 
-      const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      const lowercase = "abcdefghijklmnopqrstuvwxyz";
-      const numbers = "0123456789";
-      // Optimisation Google Workspace : caractères 100% compatibles (basé sur standards officiels 2024)
-      const symbols = options.googleWorkspaceCompatible
-        ? "!@#$%^&*()-_=+[]{}|;:,.<>?"
-        : "!@#$%^&*()-_=+[]{}|;:,.<>?/~`";
+
+      const charset = {
+        uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        lowercase: "abcdefghijklmnopqrstuvwxyz",
+        numbers: "0123456789",
+        // Symboles compatibles Google Workspace (évite @&#: réservés dans certains systèmes)
+        symbols: options.googleWorkspaceCompatible 
+          ? "!%^*()_+-=" 
+          : "!@#$%^&*()_+-=",
+      };
 
       let chars = "";
-      if (options.includeUppercase) chars += uppercase;
-      if (options.includeLowercase) chars += lowercase;
-      if (options.includeNumbers) chars += numbers;
-      if (options.includeSymbols) chars += symbols;
+      if (options.includeUppercase) chars += charset.uppercase;
+      if (options.includeLowercase) chars += charset.lowercase;
+      if (options.includeNumbers) chars += charset.numbers;
+      if (options.includeSymbols) chars += charset.symbols;
 
-      if (!chars) chars = lowercase;
+      if (!chars) chars = charset.lowercase;
 
-      // Optimisation Google Workspace : exclusions pour éviter la confusion
+      // Google Workspace Compatibility: Optimisation pour compatibilité maximale
       if (options.googleWorkspaceCompatible) {
-        // Suppression des caractères visuellement similaires (Google Workspace best practices)
+        // Caractères similaires (confusion visuelle)
         chars = chars.replace(/[il1Lo0O]/g, "");
-        
-        // Exclusion des caractères potentiellement problématiques dans certains contextes Google
-        // Note: déjà exclus des symboles mais vérification supplémentaire
-        chars = chars.replace(/[/~`]/g, "");
+        // Caractères réservés dans les systèmes backend Google exclus des symboles
+        // Accents et diacritiques non permis (déjà exclus par charset de base)
       }
 
       let result = "";
@@ -337,7 +338,7 @@ export default function PasswordGeneratorV2() {
                         </h4>
                       </div>
                       <p className="msp-text-white/80 text-xs leading-relaxed">
-                        Optimisé pour Google Workspace : évite les caractères non compatibles (l, 1, I, O, 0) et les symboles problématiques (/~`)
+                        Optimisé pour Google Workspace : évite les caractères similaires et les symboles réservés dans les systèmes backend
                       </p>
                     </div>
                   </label>
@@ -373,7 +374,7 @@ export default function PasswordGeneratorV2() {
                     {
                       key: "includeSymbols",
                       label: "Symboles",
-                      desc: options.googleWorkspaceCompatible ? "!@#$%^&*" : "!@#$%^&*/~`",
+                      desc: options.googleWorkspaceCompatible ? "!%^*()_+-=" : "!@#$%^&*()_+-=",
                       icon: "⚡",
                     },
                   ].map(({ key, label, desc, icon }) => (
