@@ -155,7 +155,7 @@ describe('Stratégie Google Workspace - Tests Optimisés 2024', () => {
       
       // Vérifier la présence de la description mise à jour
       expect(screen.getByText(/Optimisé pour Google Workspace/i)).toBeInTheDocument();
-      expect(screen.getByText(/évite les caractères non compatibles/i)).toBeInTheDocument();
+      expect(screen.getByText(/évite les caractères non compatibles/i)).toBeInTheDocument(); expect(screen.getByText(/qui peuvent causer des erreurs/i)).toBeInTheDocument();
       expect(screen.getByText(/symboles problématiques/i)).toBeInTheDocument();
     });
 
