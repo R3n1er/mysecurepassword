@@ -9,6 +9,7 @@ import Confetti from "@/components/animations/Confetti";
 import { motion } from "framer-motion";
 import ClientOnly from "@/components/common/ClientOnly";
 import { useIsClient } from "@/hooks/useIsClient";
+import { buildCharset } from "@/lib/password/policies";
 
 interface PasswordOptions {
   length: number;
@@ -46,32 +47,13 @@ export default function PasswordGeneratorV2() {
 
       await new Promise((resolve) => setTimeout(resolve, 500));
 
-
-      const charset = {
-        uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-        lowercase: "abcdefghijklmnopqrstuvwxyz",
-        numbers: "0123456789",
-        // Symboles compatibles Google Workspace (évite @&#: réservés dans certains systèmes)
-        symbols: options.googleWorkspaceCompatible 
-          ? "!%^*()_+-=" 
-          : "!@#$%^&*()_+-=",
-      };
-
-      let chars = "";
-      if (options.includeUppercase) chars += charset.uppercase;
-      if (options.includeLowercase) chars += charset.lowercase;
-      if (options.includeNumbers) chars += charset.numbers;
-      if (options.includeSymbols) chars += charset.symbols;
-
-      if (!chars) chars = charset.lowercase;
-
-      // Google Workspace Compatibility: Optimisation pour compatibilité maximale
-      if (options.googleWorkspaceCompatible) {
-        // Caractères similaires (confusion visuelle)
-        chars = chars.replace(/[il1Lo0O]/g, "");
-        // Caractères réservés dans les systèmes backend Google exclus des symboles
-        // Accents et diacritiques non permis (déjà exclus par charset de base)
-      }
+      const chars = buildCharset({
+        includeUppercase: options.includeUppercase,
+        includeLowercase: options.includeLowercase,
+        includeNumbers: options.includeNumbers,
+        includeSymbols: options.includeSymbols,
+        googleWorkspaceCompatible: options.googleWorkspaceCompatible,
+      });
 
       let result = "";
       if (isClient && window.crypto) {
@@ -187,17 +169,20 @@ export default function PasswordGeneratorV2() {
                     className="w-full h-12 text-lg font-mono bg-transparent border-0 msp-text-white placeholder:text-white/50 focus:ring-0 focus:outline-none px-6 text-center"
                   />
                   <div id="password-description" className="sr-only">
-                    {password 
+                    {password
                       ? `Mot de passe généré de ${password.length} caractères. Utilisez le bouton copier pour le copier dans le presse-papiers.`
-                      : "Aucun mot de passe généré pour le moment."
-                    }
+                      : "Aucun mot de passe généré pour le moment."}
                   </div>
                   {password && (
                     <Button
                       onClick={copyToClipboard}
                       variant="ghost"
                       size="sm"
-                      aria-label={copied ? "Mot de passe copié !" : "Copier le mot de passe"}
+                      aria-label={
+                        copied
+                          ? "Mot de passe copié !"
+                          : "Copier le mot de passe"
+                      }
                       className="absolute right-2 top-1/2 transform -translate-y-1/2 h-8 px-4 msp-button-white rounded-lg text-xs"
                     >
                       {copied ? (
@@ -222,7 +207,11 @@ export default function PasswordGeneratorV2() {
                   <Button
                     onClick={() => generatePassword(true, true)}
                     disabled={isGenerating}
-                    aria-label={isGenerating ? "Génération en cours" : "Générer un nouveau mot de passe sécurisé"}
+                    aria-label={
+                      isGenerating
+                        ? "Génération en cours"
+                        : "Générer un nouveau mot de passe sécurisé"
+                    }
                     className="w-full h-12 text-lg font-bold msp-button-gradient rounded-xl"
                   >
                     <div className="flex items-center justify-center">
@@ -247,7 +236,11 @@ export default function PasswordGeneratorV2() {
                   <Button
                     onClick={() => generatePassword(true, true)}
                     disabled={isGenerating}
-                    aria-label={isGenerating ? "Génération en cours" : "Générer un nouveau mot de passe sécurisé"}
+                    aria-label={
+                      isGenerating
+                        ? "Génération en cours"
+                        : "Générer un nouveau mot de passe sécurisé"
+                    }
                     className="w-full h-12 text-lg font-bold msp-button-gradient rounded-xl"
                   >
                     <div className="flex items-center justify-center">
@@ -296,7 +289,9 @@ export default function PasswordGeneratorV2() {
                         <span className="msp-text-white font-bold text-sm">
                           {options.length}
                         </span>
-                        <span className="msp-text-white/80 text-xs ml-1">car</span>
+                        <span className="msp-text-white/80 text-xs ml-1">
+                          car
+                        </span>
                       </div>
                     </div>
                     <input
@@ -332,13 +327,21 @@ export default function PasswordGeneratorV2() {
                     />
                     <div className="flex-1">
                       <div className="flex items-center space-x-2 mb-2">
-                        <span className="text-lg" role="img" aria-label="Bâtiment">🏢</span>
+                        <span
+                          className="text-lg"
+                          role="img"
+                          aria-label="Bâtiment"
+                        >
+                          🏢
+                        </span>
                         <h4 className="text-sm font-bold msp-text-white">
                           Mode Google Workspace
                         </h4>
                       </div>
                       <p className="msp-text-white/80 text-xs leading-relaxed">
-                        Optimisé pour Google Workspace : évite les caractères similaires et les symboles réservés dans les systèmes backend
+                        Optimisé pour Google Workspace : évite les caractères
+                        similaires et les symboles réservés dans les systèmes
+                        backend
                       </p>
                     </div>
                   </label>
@@ -351,7 +354,9 @@ export default function PasswordGeneratorV2() {
                   Types de caractères
                 </h4>
                 <fieldset className="grid grid-cols-2 gap-2">
-                  <legend className="sr-only">Types de caractères à inclure</legend>
+                  <legend className="sr-only">
+                    Types de caractères à inclure
+                  </legend>
                   {[
                     {
                       key: "includeUppercase",
@@ -374,7 +379,9 @@ export default function PasswordGeneratorV2() {
                     {
                       key: "includeSymbols",
                       label: "Symboles",
-                      desc: options.googleWorkspaceCompatible ? "!%^*()_+-=" : "!@#$%^&*()_+-=",
+                      desc: options.googleWorkspaceCompatible
+                        ? "!@#$%^&*()-_=+[]{}|;:,.<>?"
+                        : "!@#$%^&*()-_=+[]{}|;:,.<>?/~`",
                       icon: "⚡",
                     },
                   ].map(({ key, label, desc, icon }) => (
@@ -392,14 +399,14 @@ export default function PasswordGeneratorV2() {
                         }
                         className="w-4 h-4 text-white border-white/30 rounded bg-transparent focus:ring-white focus:ring-2"
                       />
-                      <span className="text-sm" role="img" aria-hidden="true">{icon}</span>
+                      <span className="text-sm" role="img" aria-hidden="true">
+                        {icon}
+                      </span>
                       <div className="flex-1 min-w-0">
                         <div className="msp-text-white font-medium text-sm truncate">
                           {label}
                         </div>
-                        <div className="msp-text-white/60 text-xs">
-                          {desc}
-                        </div>
+                        <div className="msp-text-white/60 text-xs">{desc}</div>
                       </div>
                     </label>
                   ))}

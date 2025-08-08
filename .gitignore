@@ -1,1 +1,13 @@
 node_modules
+.next
+.turbo
+coverage
+dist
+.DS_Store
+.env*
+*.log
+edit.js
+update_test.js
+edit_detailed.js
+add_detailed.js
+add_detailed_description.js
