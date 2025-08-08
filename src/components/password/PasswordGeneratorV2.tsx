@@ -27,6 +27,9 @@ export default function PasswordGeneratorV2() {
   const [mounted, setMounted] = useState(false);
   const isClient = useIsClient();
   const [showConfetti, setShowConfetti] = useState(false);
+  const [lastInteraction, setLastInteraction] = useState<
+    "button" | "option" | null
+  >(null);
 
   const [options, setOptions] = useState<PasswordOptions>({
     length: 14,
@@ -71,11 +74,11 @@ export default function PasswordGeneratorV2() {
       setPassword(result);
       if (showLoading) setIsGenerating(false);
 
-      if (triggerConfetti) {
+      if (triggerConfetti && lastInteraction === "button") {
         setShowConfetti(true);
       }
     },
-    [options, isClient]
+    [options, isClient, lastInteraction]
   );
 
   const handleOptionChange = useCallback(
@@ -86,6 +89,7 @@ export default function PasswordGeneratorV2() {
         // La génération doit être déclenchée uniquement via le bouton "Générer".
         return updatedOptions;
       });
+      setLastInteraction("option");
     },
     []
   );
@@ -202,7 +206,10 @@ export default function PasswordGeneratorV2() {
               <ClientOnly
                 fallback={
                   <Button
-                    onClick={() => generatePassword(true, true)}
+                    onClick={() => {
+                      setLastInteraction("button");
+                      generatePassword(true, true);
+                    }}
                     disabled={isGenerating}
                     aria-label={
                       isGenerating
@@ -231,7 +238,10 @@ export default function PasswordGeneratorV2() {
                   whileTap={{ scale: 0.98 }}
                 >
                   <Button
-                    onClick={() => generatePassword(true, true)}
+                    onClick={() => {
+                      setLastInteraction("button");
+                      generatePassword(true, true);
+                    }}
                     disabled={isGenerating}
                     aria-label={
                       isGenerating
