@@ -21,6 +21,17 @@ Configuration du favicon et adaptation des couleurs selon le logo MySecurePasswo
 - [x] **NOUVEAU** : Tests de validation favicon (favicon-fix.test.tsx + integration)
 - [x] **NOUVEAU** : Favicon correctement servi sur /favicon.png (HTTP 200 OK)
 
+### Refactorisation Générateur (branche dev)
+
+- [x] Centralisation des règles GWS dans `src/lib/password/policies.ts`
+- [x] Conservation de `PasswordGeneratorV2` comme composant canonique
+- [x] Alignement `metadataBase`/`openGraph.url` sur `NEXT_PUBLIC_APP_URL` (port 3000 par défaut)
+- [x] `.gitignore` complété et artefacts exclus
+- [x] Ajout `src/lib/i18n.ts` pour tests
+- [x] Ajustement des tests UI/Intégration/Accessibilité (170/170 PASS)
+- [x] Règle UX: la génération se fait uniquement via le bouton, jamais automatiquement lors d'un changement d'option (dont Google Workspace)
+- [x] Build Next OK (prêt Vercel)
+
 ### Analyse des Couleurs
 
 - [x] Identification du bleu foncé du logo comme couleur principale

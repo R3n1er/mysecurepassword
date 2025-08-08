@@ -24,7 +24,7 @@ Ce document détaille les tâches nécessaires pour finaliser l'application myse
 - [x] Générateur de mots de passe fonctionnel
 - [x] Interface moderne et responsive
 - [x] Compatibilité Google Workspace
-- [x] Régénération automatique lors du changement d'options
+- [x] Génération uniquement via le bouton (aucune régénération automatique lors des changements d'options)
 - [x] Animations fluides avec palette MSP
 
 ### ✅ Palette de Couleurs MSP
@@ -194,7 +194,7 @@ src/
 - [x] Génération de mots de passe fonctionne
 - [x] Compatibilité Google Workspace
 - [x] Copie dans le presse-papiers
-- [x] Régénération automatique
+- [x] Génération via bouton uniquement
 - [x] Interface responsive
 - [x] Palette MSP sur tous les écrans
 - [x] ScrollArrow avec internationalisation

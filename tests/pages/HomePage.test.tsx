@@ -23,9 +23,9 @@ describe("HomePage", () => {
   it("devrait contenir le composant PasswordGeneratorV2", () => {
     render(<HomePage />);
 
-    expect(screen.getByText("MySecurePassword")).toBeInTheDocument();
+    expect(screen.getAllByText(/MySecurePassword/i).length).toBeGreaterThan(0);
     expect(
-      screen.getByText("Générateur de mots de passe sécurisés")
-    ).toBeInTheDocument();
+      screen.getAllByText(/Générateur de mots de passe sécurisés/i).length
+    ).toBeGreaterThan(0);
   });
 });

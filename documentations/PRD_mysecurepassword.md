@@ -90,12 +90,12 @@ Créer un générateur de mots de passe sécurisé, gratuit et accessible à tou
 ### **Générateur de Mots de Passe**
 
 - **Web Crypto API** : Génération cryptographiquement sécurisée
-- **Compatibilité Google Workspace** : Option désactivée par défaut, régénère automatiquement le mot de passe si activée/désactivée
-- **Configuration flexible** : Longueur, types de caractères avec régénération automatique
+ - **Compatibilité Google Workspace** : Option désactivée par défaut. Le mot de passe n'est JAMAIS régénéré automatiquement lors d'un changement d'option.
+ - **Configuration flexible** : Longueur, types de caractères. La génération s'effectue uniquement via le bouton « Générer ».
 - **Analyse de force** : Validation en temps réel avec couleurs MSP
 - **Mot de passe visible** : Toujours affiché en clair, pas d'option masquer/afficher
 - **État initial vide** : Aucun mot de passe généré au démarrage
-- **Régénération intelligente** : Tout changement d'option régénère automatiquement le mot de passe existant
+ - **Déclenchement explicite** : Les changements d'options n'ont aucun effet immédiat; il faut cliquer sur « Générer » pour obtenir un nouveau mot de passe
 
 ### **Interface Utilisateur**
 
@@ -121,9 +121,9 @@ Créer un générateur de mots de passe sécurisé, gratuit et accessible à tou
 2. **Configuration** : Ajustement des paramètres (Google Workspace désactivé par défaut)
 3. **Génération** : Clic sur bouton MSP Gold/Yellow pour créer le premier mot de passe
 4. **Visualisation** : Mot de passe toujours visible en clair
-5. **Modification dynamique** : Changement d'options régénère automatiquement le mot de passe
+5. **Modification des options** : Aucun effet immédiat sur le mot de passe existant
 6. **Copie** : Un clic pour copier avec feedback visuel
-7. **Régénération** : Nouveaux mots de passe à la demande ou automatique
+7. **Régénération** : Uniquement à la demande via le bouton
 
 ### **Points de Contact Visuels**
 

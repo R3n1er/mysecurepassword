@@ -28,7 +28,9 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("http://localhost:3001"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"
+  ),
   alternates: {
     canonical: "/",
   },
@@ -45,7 +47,7 @@ export const metadata: Metadata = {
     title: "MySecurePassword - Générateur de mots de passe sécurisés",
     description:
       "Générateur de mots de passe sécurisés compatibles avec Google Workspace. Créez des mots de passe forts et sécurisés en quelques clics.",
-    url: "http://localhost:3000",
+    url: process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000",
     siteName: "MySecurePassword",
     images: [
       {
@@ -88,7 +90,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${inter.variable} antialiased`} suppressHydrationWarning>
+      <body
+        className={`${inter.variable} antialiased`}
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>
