@@ -95,7 +95,7 @@ Créer un générateur de mots de passe sécurisé, gratuit et accessible à tou
 - **Analyse de force** : Validation en temps réel avec couleurs MSP
 - **Mot de passe visible** : Toujours affiché en clair, pas d'option masquer/afficher
 - **État initial vide** : Aucun mot de passe généré au démarrage
-- **Régénération intelligente** : Tout changement d'option régénère automatiquement le mot de passe existant
+ - **Déclenchement explicite** : Les changements d'options n'ont aucun effet immédiat; il faut cliquer sur « Générer » pour obtenir un nouveau mot de passe
 
 ### **Interface Utilisateur**
 

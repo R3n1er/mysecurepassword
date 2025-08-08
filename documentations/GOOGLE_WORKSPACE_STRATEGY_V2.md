@@ -55,11 +55,11 @@ chars = chars.replace(/[/~`]/g, "");
 #### **Description optimisée**
 ```
 Avant : "Évite les caractères ambigus (l, 1, I, O, 0)"
-Après  : "Optimisé pour Google Workspace : évite les caractères ambigus (l, 1, I, O, 0) et les symboles problématiques (/~`)"
+Après  : "Optimisé pour Google Workspace : évite les caractères non compatibles (l, 1, I, O, 0) et les symboles problématiques (/~`)"
 ```
 
 #### **Adaptation dynamique des symboles**
-- **Mode Google Workspace** : Affiche `!@#$%^&*`
+- **Mode Google Workspace** : Affiche `!@#$%^&*` (confettis uniquement après clic sur « Générer »)
 - **Mode Standard** : Affiche `!@#$%^&*/~``
 
 ---

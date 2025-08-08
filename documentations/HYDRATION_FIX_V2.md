@@ -57,7 +57,7 @@ export default function Confetti({ isActive, onComplete }: ConfettiProps) {
 
 #### **APIs navigateur sécurisées**
 ```typescript
-// Création de confettis avec fallbacks
+// Création de confettis avec fallbacks (déclenchés uniquement après clic sur "Générer")
 if (!isClient) return;
 
 const windowWidth = typeof window !== 'undefined' ? window.innerWidth : 1200;
