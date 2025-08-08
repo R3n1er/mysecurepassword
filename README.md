@@ -12,10 +12,11 @@ Générateur de mots de passe sécurisés 100% gratuit, compatible avec Google W
 ### 🔐 Générateur de Mots de Passe
 
 - **Web Crypto API** - Génération cryptographiquement sécurisée
-- **Compatibilité Google Workspace** - Évite les caractères problématiques
-- **Configuration flexible** - Longueur, caractères, symboles
+- **Compatibilité Google Workspace** - Évite les caractères problématiques (désactivé par défaut)
+- **Configuration flexible** - Longueur, caractères, symboles (aucune régénération automatique)
 - **Analyse de force** - Validation en temps réel
 - **Copie rapide** - Un clic pour copier
+- **Confettis** - Affichés uniquement après un clic sur « Générer » (jamais lors d’un changement d’options)
 
 ### 🎨 Interface Moderne
 
@@ -65,25 +66,21 @@ src/
 │   └── globals.css       # Styles globaux
 ├── components/
 │   ├── password/
-│   │   └── PasswordGenerator.tsx  # Composant principal
+│   │   └── PasswordGeneratorV2.tsx  # Composant principal
 │   └── ui/               # Composants UI (Shadcn)
 ├── lib/                  # Utilitaires
+│   └── password/
+│       └── policies.ts    # Règles centralisées (sets de caractères, mode GWS)
 └── types/                # Types TypeScript
 ```
 
 ## 🔧 Configuration
 
-### Variables d'Environnement (Optionnelles)
+### Variables d'Environnement
 
 ```env
-# Email (pour contact)
-RESEND_API_KEY=re_...
-
-# SMS (pour notifications)
-TWILIO_AUTH_TOKEN=...
-
-# Recherche (pour futures fonctionnalités)
-NEXT_PUBLIC_ALGOLIA_APP_ID=...
+# URL de l'application (port 3000 en local)
+NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
 Voir `.env.example` pour la liste complète.
@@ -94,14 +91,15 @@ Voir `.env.example` pour la liste complète.
 
 - **Longueur configurable** (8-64 caractères, **14 par défaut**)
 - **Types de caractères** (majuscules, minuscules, chiffres, symboles)
-- **Exclusions intelligentes** (caractères similaires, ambigus)
-- **Mode Google Workspace** (compatibilité maximale)
+- **Exclusions intelligentes** (caractères visuellement similaires en mode GWS)
+- **Mode Google Workspace** (compatibilité maximale, désactivé par défaut)
 
 ### ✅ Interface Utilisateur
 
 - **Génération en un clic**
 - **Analyse de force en temps réel**
 - **Copie rapide**
+- **Règle UX** : la génération s’effectue uniquement via le bouton « Générer »
 - **Affichage/masquage du mot de passe**
 - **Configuration intuitive**
 
@@ -150,7 +148,7 @@ Voir `.env.example` pour la liste complète.
 ### Vercel (Recommandé)
 
 1. Connecter votre repo à Vercel
-2. Déployer automatiquement
+2. Déploiement automatique à chaque push sur `main`
 
 ### Autres Plateformes
 
