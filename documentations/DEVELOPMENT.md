@@ -16,6 +16,7 @@
 ## Tests
 - 170 tests Vitest PASS
 - Intégration favicon et description GWS adaptées
+ - Validation UX: aucun appel à `generatePassword` déclenché par `handleOptionChange` (génération uniquement via le bouton)
 
 ## Déploiement
 - `npm run build` OK

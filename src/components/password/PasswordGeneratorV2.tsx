@@ -82,15 +82,12 @@ export default function PasswordGeneratorV2() {
     (newOptions: Partial<PasswordOptions>) => {
       setOptions((prev) => {
         const updatedOptions = { ...prev, ...newOptions };
-
-        if (password) {
-          setTimeout(() => generatePassword(false, false), 0);
-        }
-
+        // Ne pas régénérer automatiquement le mot de passe lors des changements d'options.
+        // La génération doit être déclenchée uniquement via le bouton "Générer".
         return updatedOptions;
       });
     },
-    [password, generatePassword]
+    []
   );
 
   const copyToClipboard = async () => {

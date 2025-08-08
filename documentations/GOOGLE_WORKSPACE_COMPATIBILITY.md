@@ -52,13 +52,14 @@ L'option **"Compatibilité Google Workspace"** est désactivée par défaut et :
 1. **Exclut les caractères similaires** (l,1,I,O,0) pour éviter la confusion
 2. **Exclut les symboles réservés** (@&#:) dans les systèmes backend Google
 3. **Utilise uniquement** les symboles sécurisés (!%^*()_+-=)
-4. **Garantit la compatibilité** avec les App Passwords (16 caractères recommandés)
+4. **Génération uniquement via le bouton** : aucun changement d'option (dont Google Workspace) ne régénère automatiquement le mot de passe actuel. Il faut cliquer sur « Générer » pour appliquer les nouvelles règles.
+5. **Garantit la compatibilité** avec les App Passwords (16 caractères recommandés)
 
 ## 🎨 Interface Utilisateur
 
 ### Option Google Workspace
 
-- ✅ **Activée par défaut** (case cochée)
+- ⛔ **Désactivée par défaut** (case décochée)
 - 🟢 **Couleur verte** pour indiquer la sécurité
 - 📝 **Description claire** des avantages
 - 🔒 **Icône de validation** (CheckCircle2)
