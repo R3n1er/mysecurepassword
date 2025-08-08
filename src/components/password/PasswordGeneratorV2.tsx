@@ -27,9 +27,6 @@ export default function PasswordGeneratorV2() {
   const [mounted, setMounted] = useState(false);
   const isClient = useIsClient();
   const [showConfetti, setShowConfetti] = useState(false);
-  const [lastInteraction, setLastInteraction] = useState<
-    "button" | "option" | null
-  >(null);
 
   const [options, setOptions] = useState<PasswordOptions>({
     length: 14,
@@ -74,11 +71,13 @@ export default function PasswordGeneratorV2() {
       setPassword(result);
       if (showLoading) setIsGenerating(false);
 
-      if (triggerConfetti && lastInteraction === "button") {
-        setShowConfetti(true);
+      if (triggerConfetti) {
+        // Redémarre le cycle pour garantir l'affichage au premier clic
+        setShowConfetti(false);
+        setTimeout(() => setShowConfetti(true), 0);
       }
     },
-    [options, isClient, lastInteraction]
+    [options, isClient]
   );
 
   const handleOptionChange = useCallback(
@@ -89,7 +88,8 @@ export default function PasswordGeneratorV2() {
         // La génération doit être déclenchée uniquement via le bouton "Générer".
         return updatedOptions;
       });
-      setLastInteraction("option");
+      // Assurer qu'aucun confetti n'apparaît suite à un changement d'options
+      setShowConfetti(false);
     },
     []
   );
@@ -207,7 +207,6 @@ export default function PasswordGeneratorV2() {
                 fallback={
                   <Button
                     onClick={() => {
-                      setLastInteraction("button");
                       generatePassword(true, true);
                     }}
                     disabled={isGenerating}
@@ -239,7 +238,6 @@ export default function PasswordGeneratorV2() {
                 >
                   <Button
                     onClick={() => {
-                      setLastInteraction("button");
                       generatePassword(true, true);
                     }}
                     disabled={isGenerating}
