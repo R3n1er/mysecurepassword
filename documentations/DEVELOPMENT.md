@@ -1,3 +1,26 @@
+# Plan d'implémentation — Refactor Password Generator
+
+## Objectifs
+- Conserver `PasswordGeneratorV2` comme composant principal
+- Centraliser les règles de compatibilité Google Workspace
+- Aligner les métadonnées pour déploiement Vercel
+- Assurer 100% de succès test (Vitest)
+
+## Changements clés
+- `src/lib/password/policies.ts`: export des sets de caractères et `buildCharset`
+- `src/components/password/PasswordGeneratorV2.tsx`: utilisation de `buildCharset`
+- `src/app/layout.tsx`: `metadataBase` et `openGraph.url` lisent `NEXT_PUBLIC_APP_URL` (fallback 3000)
+- `.gitignore`: ajout `.next`, `coverage`, `dist`, scripts ad-hoc
+- `src/lib/i18n.ts`: utilitaire i18n pour tests
+
+## Tests
+- 170 tests Vitest PASS
+- Intégration favicon et description GWS adaptées
+
+## Déploiement
+- `npm run build` OK
+- Vercel: définir `NEXT_PUBLIC_APP_URL` sur l'URL de prod
+
 # Guide de Développement - MySecurePassword
 
 ## 🚀 Vue d'ensemble
