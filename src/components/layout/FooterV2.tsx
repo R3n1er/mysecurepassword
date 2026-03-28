@@ -39,9 +39,9 @@ export default function FooterV2() {
                 <Image
                   src="/mysecurepassword-logo-v2-min.png"
                   alt="MySecurePassword Logo"
-                  width={64}
-                  height={64}
-                  className="w-20 h-20 lg:w-24 lg:h-24 object-contain"
+                  width={360}
+                  height={360}
+                  className="w-16 h-16 lg:w-20 lg:h-20 object-contain"
                 />
               </div>
               <div>

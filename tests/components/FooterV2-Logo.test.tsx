@@ -32,9 +32,9 @@ describe('FooterV2 - Nouveau Logo', () => {
       render(<FooterV2 />);
       
       const logoImage = screen.getByAltText('MySecurePassword Logo');
-      expect(logoImage).toHaveAttribute('width', '64');
-      expect(logoImage).toHaveAttribute('height', '64');
-      expect(logoImage).toHaveClass('w-20', 'h-20', 'lg:w-24', 'lg:h-24', 'object-contain');
+      expect(logoImage).toHaveAttribute('width', '360');
+      expect(logoImage).toHaveAttribute('height', '360');
+      expect(logoImage).toHaveClass('w-16', 'h-16', 'lg:w-20', 'lg:h-20', 'object-contain');
     });
 
     it('devrait être dans un conteneur simple sans fond coloré', () => {
@@ -153,12 +153,12 @@ describe('FooterV2 - Nouveau Logo', () => {
       
       const logoImage = screen.getByAltText('MySecurePassword Logo');
       
-      // Footer: w-20 h-20 lg:w-24 lg:h-24 (80x80px → 96x96px)
-      expect(logoImage).toHaveClass('w-20', 'h-20', 'lg:w-24', 'lg:h-24');
+      // Footer: w-16 h-16 lg:w-20 lg:h-20
+      expect(logoImage).toHaveClass('w-16', 'h-16', 'lg:w-20', 'lg:h-20');
       
       // Vérifier que ce n'est pas les classes du header (w-24 h-24 lg:w-28 lg:h-28)
-      expect(logoImage).not.toHaveClass('w-16', 'h-16');
-      expect(logoImage).not.toHaveClass('lg:w-20', 'lg:h-20');
+      expect(logoImage).not.toHaveClass('w-24', 'h-24');
+      expect(logoImage).not.toHaveClass('lg:w-28', 'lg:h-28');
     });
 
     it('devrait maintenir les proportions avec object-contain', () => {
