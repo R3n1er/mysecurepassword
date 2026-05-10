@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -25,6 +25,7 @@ export default function PasswordGeneratorV2() {
   const [copied, setCopied] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const clearPasswordTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isClient = useIsClient();
   const [showConfetti, setShowConfetti] = useState(false);
 
@@ -39,6 +40,12 @@ export default function PasswordGeneratorV2() {
 
   useEffect(() => {
     setMounted(true);
+
+    return () => {
+      if (clearPasswordTimeoutRef.current) {
+        clearTimeout(clearPasswordTimeoutRef.current);
+      }
+    };
   }, []);
 
   const generatePassword = useCallback(
@@ -77,6 +84,10 @@ export default function PasswordGeneratorV2() {
       }
 
       setPassword(result);
+      if (clearPasswordTimeoutRef.current) {
+        clearTimeout(clearPasswordTimeoutRef.current);
+        clearPasswordTimeoutRef.current = null;
+      }
       if (showLoading) setIsGenerating(false);
 
       if (triggerConfetti) {
@@ -119,6 +130,17 @@ export default function PasswordGeneratorV2() {
 
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
+      clearPasswordTimeoutRef.current = setTimeout(async () => {
+        setPassword("");
+        setCopied(false);
+
+        try {
+          await navigator.clipboard?.writeText("");
+        } catch {
+          // Certains navigateurs refusent l'écriture clipboard hors interaction utilisateur.
+          // Le champ local est quand même effacé.
+        }
+      }, 30_000);
     } catch (err) {
       console.error("Erreur lors de la copie:", err);
     }

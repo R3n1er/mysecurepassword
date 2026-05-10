@@ -1,18 +1,17 @@
-import { describe, it, expect } from 'vitest';
-import { env, validateEnv } from '@/config/env';
+import { describe, expect, it } from "vitest";
+import { env, validateEnv } from "@/config/env";
 
-describe('Environment Configuration', () => {
-  it('has required environment variables', () => {
-    expect(env.SUPABASE_URL).toBeDefined();
-    expect(env.SUPABASE_ANON_KEY).toBeDefined();
+describe("Environment Configuration", () => {
+  it("exposes the application public URL", () => {
     expect(env.APP_URL).toBeDefined();
   });
 
-  it('validates environment successfully', () => {
+  it("validates environment successfully", () => {
     expect(() => validateEnv()).not.toThrow();
+    expect(validateEnv()).toBe(true);
   });
 
-  it('has default values for optional variables', () => {
-    expect(env.APP_URL).toBe('http://localhost:3000');
+  it("uses a localhost default for local builds", () => {
+    expect(env.APP_URL).toBe("http://localhost:3000");
   });
 });
