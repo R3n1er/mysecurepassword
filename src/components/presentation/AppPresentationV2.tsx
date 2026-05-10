@@ -12,7 +12,7 @@ export default function AppPresentationV2() {
             Pourquoi MySecurePassword ?
           </h2>
           <p className="text-xl lg:text-2xl msp-text-white/80 max-w-4xl mx-auto leading-relaxed">
-            La solution française de référence pour générer des mots de passe sécurisés
+            Une interface claire, locale et auditable pour créer des mots de passe robustes
           </p>
         </div>
 
@@ -28,7 +28,7 @@ export default function AppPresentationV2() {
               </h3>
             </div>
             <p className="msp-text-white/80 leading-relaxed text-lg">
-              Utilise la Web Crypto API pour une génération cryptographiquement sécurisée. 
+              Utilise la Web Crypto API avec tirage sans biais modulo pour une génération cryptographiquement sécurisée. 
               Vos mots de passe ne sont jamais stockés ou transmis.
             </p>
           </div>

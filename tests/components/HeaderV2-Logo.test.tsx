@@ -9,12 +9,7 @@ import HeaderV2 from '@/components/layout/HeaderV2';
 // Mock Next.js Image
 vi.mock('next/image', () => ({
   default: ({ src, alt, priority, ...props }: any) => (
-    <img 
-      src={src} 
-      alt={alt} 
-      {...props} 
-      {...(priority && { priority: 'true' })}
-    />
+    <img src={src} alt={alt} {...props} {...(priority && { "data-priority": "true" })} />
   ),
 }));
 
@@ -41,8 +36,8 @@ describe('HeaderV2 - Nouveau Logo', () => {
       render(<HeaderV2 />);
       
       const logoImage = screen.getByAltText('MySecurePassword Logo');
-      // Le mock Next.js convertit priority en attribut string
-      expect(logoImage).toHaveAttribute('priority', 'true');
+      // Le mock Next.js expose priority via un attribut data valide pour éviter les warnings React.
+      expect(logoImage).toHaveAttribute('data-priority', 'true');
     });
 
     it('devrait être dans un conteneur simple sans fond coloré', () => {
@@ -67,8 +62,8 @@ describe('HeaderV2 - Nouveau Logo', () => {
       
       // Vérifier que les autres éléments sont toujours présents
       expect(screen.getByText('MySecurePassword')).toBeInTheDocument();
-      expect(screen.getByText('Générateur de mots de passe sécurisés')).toBeInTheDocument();
-      expect(screen.getByText('Solution française')).toBeInTheDocument();
+      expect(screen.getByText('Générateur de mots de passe haute sécurité')).toBeInTheDocument();
+      expect(screen.getByText('Solution française auditée')).toBeInTheDocument();
     });
 
     it('devrait conserver les classes CSS Design V2', () => {

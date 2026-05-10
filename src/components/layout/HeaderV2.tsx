@@ -28,10 +28,10 @@ export default function HeaderV2() {
               MySecurePassword
             </h1>
             <p className="text-xl lg:text-2xl msp-text-white/90 mb-3 font-medium">
-              Générateur de mots de passe sécurisés
+              Générateur de mots de passe haute sécurité
             </p>
             <p className="text-lg lg:text-xl msp-text-white/80 leading-relaxed">
-              Compatible Google Workspace • Conforme RGPD • 100% gratuit
+              Web Crypto API • Compatible Google Workspace • Zéro stockage
             </p>
           </div>
 
@@ -44,7 +44,7 @@ export default function HeaderV2() {
                 <div className="w-5 h-4 bg-red-600"></div>
               </div>
               <span className="text-white font-bold text-sm">
-                Solution française
+                Solution française auditée
               </span>
             </div>
           </div>

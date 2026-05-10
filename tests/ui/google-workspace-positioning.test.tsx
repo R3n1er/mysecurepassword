@@ -10,7 +10,7 @@ import PasswordGeneratorV2 from "@/components/password/PasswordGeneratorV2";
 // Mocks
 vi.mock("framer-motion", () => ({
   motion: {
-    div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
+    div: ({ children, whileHover, whileTap, ...props }: any) => <div {...props}>{children}</div>,
   },
 }));
 

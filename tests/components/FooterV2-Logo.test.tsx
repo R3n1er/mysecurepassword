@@ -9,12 +9,7 @@ import FooterV2 from '@/components/layout/FooterV2';
 // Mock Next.js Image
 vi.mock('next/image', () => ({
   default: ({ src, alt, priority, ...props }: any) => (
-    <img 
-      src={src} 
-      alt={alt} 
-      {...props} 
-      {...(priority && { priority: 'true' })}
-    />
+    <img src={src} alt={alt} {...props} />
   ),
 }));
 

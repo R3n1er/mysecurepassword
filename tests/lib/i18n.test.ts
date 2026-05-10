@@ -12,7 +12,7 @@ describe('i18n', () => {
   });
 
   it('should fallback to French for invalid locale', () => {
-    // @ts-expect-error Testing invalid locale
+    // @ts-ignore Testing invalid locale fallback at runtime
     expect(t('scrollToTop', 'invalid')).toBe('Retour en haut de la page');
   });
 

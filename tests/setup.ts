@@ -1,5 +1,11 @@
-import "@testing-library/jest-dom";
+import "@testing-library/jest-dom/vitest";
+import React from "react";
 import { vi } from "vitest";
+
+// Certains tests TSX historiques n'importent pas React explicitement.
+// Avec l'outillage Vite/Vitest récent, on expose React globalement pour
+// conserver la compatibilité sans réécrire toute la suite de tests.
+Object.assign(globalThis, { React });
 
 // Mock Next.js router
 vi.mock("next/navigation", () => ({

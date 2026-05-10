@@ -55,16 +55,24 @@ export default function PasswordGeneratorV2() {
         googleWorkspaceCompatible: options.googleWorkspaceCompatible,
       });
 
+      if (!isClient || !window.crypto?.getRandomValues) {
+        throw new Error(
+          "La Web Crypto API est requise pour générer un mot de passe sécurisé."
+        );
+      }
+
       let result = "";
-      if (isClient && window.crypto) {
-        const array = new Uint8Array(options.length);
-        window.crypto.getRandomValues(array);
-        for (let i = 0; i < options.length; i++) {
-          result += chars[array[i] % chars.length];
-        }
-      } else {
-        for (let i = 0; i < options.length; i++) {
-          result += chars[Math.floor(Math.random() * chars.length)];
+      const maxValidByte = Math.floor(256 / chars.length) * chars.length - 1;
+
+      while (result.length < options.length) {
+        const randomBytes = new Uint8Array(options.length - result.length);
+        window.crypto.getRandomValues(randomBytes);
+
+        for (const byte of randomBytes) {
+          if (byte <= maxValidByte) {
+            result += chars[byte % chars.length];
+            if (result.length === options.length) break;
+          }
         }
       }
 
@@ -147,7 +155,7 @@ export default function PasswordGeneratorV2() {
                   Générateur Sécurisé
                 </h2>
                 <p className="text-sm msp-text-white/80">
-                  Chiffrement cryptographique avancé
+                  Web Crypto API, sans biais modulo
                 </p>
               </div>
             </div>

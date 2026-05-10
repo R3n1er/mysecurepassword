@@ -1,5 +1,9 @@
 // Configuration des variables d'environnement
 export const env = {
+  // Supabase Configuration (compatibilité tests / template historique)
+  SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+
   // Email Configuration (Resend)
   RESEND_API_KEY: process.env.RESEND_API_KEY!,
 

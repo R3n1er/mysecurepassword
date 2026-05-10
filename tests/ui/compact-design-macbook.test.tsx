@@ -10,12 +10,12 @@ import PasswordGeneratorV2 from '@/components/password/PasswordGeneratorV2';
 // Mocks
 vi.mock('framer-motion', () => ({
   motion: {
-    div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
+    div: ({ children, whileHover, whileTap, ...props }: any) => <div {...props}>{children}</div>,
   },
 }));
 
 vi.mock('next/image', () => ({
-  default: ({ src, alt, ...props }: any) => <img src={src} alt={alt} {...props} />,
+  default: ({ src, alt, priority, ...props }: any) => <img src={src} alt={alt} {...props} />,
 }));
 
 describe('Design Compact MacBook 15"', () => {
@@ -37,7 +37,7 @@ describe('Design Compact MacBook 15"', () => {
     
     // Vérifier le titre compact
     expect(screen.getByText('Générateur Sécurisé')).toBeInTheDocument();
-    expect(screen.getByText('Chiffrement cryptographique avancé')).toBeInTheDocument();
+    expect(screen.getByText('Web Crypto API, sans biais modulo')).toBeInTheDocument();
     
     // Vérifier que l'icône et le titre sont plus petits
     const iconContainer = document.querySelector('.w-12.h-12'); // Au lieu de w-16 h-16

@@ -13,12 +13,12 @@ import FooterV2 from '@/components/layout/FooterV2';
 // Mocks
 vi.mock('framer-motion', () => ({
   motion: {
-    div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
+    div: ({ children, whileHover, whileTap, ...props }: any) => <div {...props}>{children}</div>,
   },
 }));
 
 vi.mock('next/image', () => ({
-  default: ({ src, alt, ...props }: any) => <img src={src} alt={alt} {...props} />,
+  default: ({ src, alt, priority, ...props }: any) => <img src={src} alt={alt} {...props} />,
 }));
 
 describe('Design V2 - Validation du cahier des charges', () => {
@@ -56,7 +56,7 @@ describe('Design V2 - Validation du cahier des charges', () => {
     it('devrait avoir le badge français', () => {
       render(<HeaderV2 />);
       
-      expect(screen.getByText('Solution française')).toBeInTheDocument();
+      expect(screen.getByText('Solution française auditée')).toBeInTheDocument();
     });
   });
 

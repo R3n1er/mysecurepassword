@@ -11,12 +11,12 @@ import LegalMentionsPage from '@/app/legal/page';
 // Mocks
 vi.mock('framer-motion', () => ({
   motion: {
-    div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
+    div: ({ children, whileHover, whileTap, ...props }: any) => <div {...props}>{children}</div>,
   },
 }));
 
 vi.mock('next/image', () => ({
-  default: ({ src, alt, ...props }: any) => <img src={src} alt={alt} {...props} />,
+  default: ({ src, alt, priority, ...props }: any) => <img src={src} alt={alt} {...props} />,
 }));
 
 describe('Pages Légales', () => {

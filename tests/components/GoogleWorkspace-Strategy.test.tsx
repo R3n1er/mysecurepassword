@@ -40,14 +40,14 @@ describe("Stratégie Google Workspace - Tests Optimisés 2024", () => {
       // Activer le mode Google Workspace
       const googleWorkspaceCheckbox = screen.getByLabelText(
         /Mode Google Workspace/i
-      );
+      ) as HTMLInputElement;
       fireEvent.click(googleWorkspaceCheckbox);
 
       // Activer uniquement les symboles pour isoler le test
-      const uppercaseCheckbox = screen.getByLabelText(/Majuscules/i);
-      const lowercaseCheckbox = screen.getByLabelText(/Minuscules/i);
-      const numbersCheckbox = screen.getByLabelText(/Chiffres/i);
-      const symbolsCheckbox = screen.getAllByLabelText(/Symboles/i)[0];
+      const uppercaseCheckbox = screen.getByLabelText(/Majuscules/i) as HTMLInputElement;
+      const lowercaseCheckbox = screen.getByLabelText(/Minuscules/i) as HTMLInputElement;
+      const numbersCheckbox = screen.getByLabelText(/Chiffres/i) as HTMLInputElement;
+      const symbolsCheckbox = screen.getAllByLabelText(/Symboles/i)[0] as HTMLInputElement;
 
       // Désactiver tout sauf les symboles
       if (uppercaseCheckbox.checked) fireEvent.click(uppercaseCheckbox);
@@ -82,7 +82,7 @@ describe("Stratégie Google Workspace - Tests Optimisés 2024", () => {
       // Activer le mode Google Workspace
       const googleWorkspaceCheckbox = screen.getByLabelText(
         /Mode Google Workspace/i
-      );
+      ) as HTMLInputElement;
       fireEvent.click(googleWorkspaceCheckbox);
 
       // Générer plusieurs mots de passe pour tester l'exclusion
@@ -118,16 +118,16 @@ describe("Stratégie Google Workspace - Tests Optimisés 2024", () => {
       // S'assurer que le mode Google Workspace est désactivé
       const googleWorkspaceCheckbox = screen.getByLabelText(
         /Mode Google Workspace/i
-      );
+      ) as HTMLInputElement;
       if (googleWorkspaceCheckbox.checked) {
         fireEvent.click(googleWorkspaceCheckbox);
       }
 
       // Activer uniquement les symboles
-      const uppercaseCheckbox = screen.getByLabelText(/Majuscules/i);
-      const lowercaseCheckbox = screen.getByLabelText(/Minuscules/i);
-      const numbersCheckbox = screen.getByLabelText(/Chiffres/i);
-      const symbolsCheckbox = screen.getAllByLabelText(/Symboles/i)[0];
+      const uppercaseCheckbox = screen.getByLabelText(/Majuscules/i) as HTMLInputElement;
+      const lowercaseCheckbox = screen.getByLabelText(/Minuscules/i) as HTMLInputElement;
+      const numbersCheckbox = screen.getByLabelText(/Chiffres/i) as HTMLInputElement;
+      const symbolsCheckbox = screen.getAllByLabelText(/Symboles/i)[0] as HTMLInputElement;
 
       if (uppercaseCheckbox.checked) fireEvent.click(uppercaseCheckbox);
       if (lowercaseCheckbox.checked) fireEvent.click(lowercaseCheckbox);
@@ -179,7 +179,7 @@ describe("Stratégie Google Workspace - Tests Optimisés 2024", () => {
       // Activer le mode Google Workspace
       const googleWorkspaceCheckbox = screen.getByLabelText(
         /Mode Google Workspace/i
-      );
+      ) as HTMLInputElement;
       fireEvent.click(googleWorkspaceCheckbox);
 
       // En mode Google Workspace, devrait afficher seulement les symboles approuvés
@@ -196,7 +196,7 @@ describe("Stratégie Google Workspace - Tests Optimisés 2024", () => {
       // Activer le mode Google Workspace
       const googleWorkspaceCheckbox = screen.getByLabelText(
         /Mode Google Workspace/i
-      );
+      ) as HTMLInputElement;
       fireEvent.click(googleWorkspaceCheckbox);
 
       // Générer un mot de passe complet
@@ -228,12 +228,12 @@ describe("Stratégie Google Workspace - Tests Optimisés 2024", () => {
       // Activer le mode Google Workspace
       const googleWorkspaceCheckbox = screen.getByLabelText(
         /Mode Google Workspace/i
-      );
+      ) as HTMLInputElement;
       fireEvent.click(googleWorkspaceCheckbox);
 
       // Générer plusieurs mots de passe pour test de diversité
       const generateButton = screen.getByRole("button", { name: /générer/i });
-      const passwords = [];
+      const passwords: string[] = [];
 
       for (let i = 0; i < 5; i++) {
         fireEvent.click(generateButton);

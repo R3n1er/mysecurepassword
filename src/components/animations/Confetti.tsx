@@ -29,6 +29,16 @@ const colors = [
   "#87CEEB", // Bleu ciel
 ];
 
+function getViewportSize() {
+  const width = typeof window !== "undefined" ? window.innerWidth : 1200;
+  const height = typeof window !== "undefined" ? window.innerHeight : 800;
+
+  return {
+    width: Number.isFinite(width) && width > 0 ? width : 1200,
+    height: Number.isFinite(height) && height > 0 ? height : 800,
+  };
+}
+
 export default function Confetti({ isActive, onComplete }: ConfettiProps) {
   const [confetti, setConfetti] = useState<ConfettiPiece[]>([]);
   const isClient = useIsClient();
@@ -42,7 +52,7 @@ export default function Confetti({ isActive, onComplete }: ConfettiProps) {
     // Créer 50 confettis (seulement côté client pour éviter l'hydratation)
     if (!isClient) return;
     
-    const windowWidth = typeof window !== 'undefined' ? window.innerWidth : 1200;
+    const { width: windowWidth } = getViewportSize();
     const newConfetti: ConfettiPiece[] = Array.from({ length: 50 }, (_, i) => ({
       id: i,
       x: Math.random() * windowWidth,
@@ -60,7 +70,7 @@ export default function Confetti({ isActive, onComplete }: ConfettiProps) {
 
     // Animation
     const animate = () => {
-      const windowHeight = typeof window !== 'undefined' ? window.innerHeight : 800;
+      const { height: windowHeight } = getViewportSize();
       setConfetti((prev) =>
         prev
           .map((piece) => ({
